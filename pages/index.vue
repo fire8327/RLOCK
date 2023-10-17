@@ -11,13 +11,13 @@
             </div>
             <div class="w-full py-6 rounded-[30px] border border-[#7B7B7B] dark:border-white bg-white">
                 <div class="w-4/5 mx-auto grid grid-cols-4 gap-5 font-light">
-                    <input type="text" class="px-6 pt-4 rounded-[15px] border border-[#B1B1B1] bg-[#EBEBEB] dark:bg-transparent placeholder-[#B1B1B1]" placeholder="Куда едем?">
+                    <input type="text" class="px-6 py-4 rounded-[15px] border border-[#B1B1B1] bg-[#EBEBEB] dark:bg-transparent placeholder-[#B1B1B1]" placeholder="Куда едем?">
                     <div class="flex items-center bg-[#EBEBEB] dark:bg-transparent rounded-[15px] border border-[#B1B1B1] relative py-4">
                         <input type="date" class="w-1/2 px-6 bg-[#EBEBEB] rounded-l-[15px]">
                         <input type="date" class="w-1/2 px-6 bg-[#EBEBEB] rounded-r-[15px]">
                         <div class="absolute w-px h-full top-0 left-1/2 bg-[#B1B1B1]"></div>
                     </div>
-                    <input type="text" class="px-6 pt-4 rounded-[15px] border border-[#B1B1B1] bg-[#EBEBEB] dark:bg-transparent placeholder-[#B1B1B1]" placeholder="Гости, номера">
+                    <input type="text" class="px-6 py-4 rounded-[15px] border border-[#B1B1B1] bg-[#EBEBEB] dark:bg-transparent placeholder-[#B1B1B1]" placeholder="Гости, номера">
                     <button class="py-[14px] text-center text-white rounded-[15px] bg-gradient-to-l from-[#B98CF2] to-[#40BDDB] text-2xl">Найти</button>
                 </div>
             </div>
