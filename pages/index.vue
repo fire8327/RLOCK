@@ -45,7 +45,7 @@
                 <div class="flex flex-col items-center gap-5 w-[27%] text-white">
                     <div class="relative flex items-center justify-center w-full py-[38px] bg-gradient-to-r from-[#d2b4f7] to-[#88d3ea] backdrop-blur-[50px] rounded-[25px] dark:from-[#595959]/50 dark:to-[#595959]/50 group">
                         <p class="text-[29px] leading-[135.3%] font-light text-center z-[1]">Удобная система бронирования жилья</p>
-                        <div class="absolute w-full h-full dark:bg-gradient-to-r dark:from-[#B98CF2] dark:to-[#48BBDE] top-0 left-0 backdrop-blur-[50px] rounded-[25px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+                        <div class="absolute w-full h-full bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] top-0 left-0 backdrop-blur-[50px] rounded-[25px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
                     </div>
                     <div class="bg-gradient-to-br from-[#48BBDE] to-[#B190F1] rounded-[25px] p-[3px] w-full">
                         <div class="flex flex-col items-center text-center py-[21px] w-full rounded-[25px] bg-white text-[#131313] dark:bg-[#121212] dark:text-white">
