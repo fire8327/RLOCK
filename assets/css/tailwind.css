@@ -34,3 +34,7 @@
         @apply max-w-[var(--widthContent)]
     } 
 }
+
+.why_gradient {
+    background: linear-gradient(103deg, #B190F1 1.26%, #8B9FEA 36.75%, #75A9E6 57.83%, #5DB2E2 79.94%, #48BBDE 100%);
+}

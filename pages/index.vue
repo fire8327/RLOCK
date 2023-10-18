@@ -21,7 +21,40 @@
                     <button class="py-[14px] text-center text-white rounded-[15px] bg-gradient-to-l from-[#B98CF2] to-[#40BDDB] text-2xl">Найти</button>
                 </div>
             </div>
-        </div>        
+        </div>    
+        <div class="flex flex-col gap-20">
+            <div class="flex flex-col gap-3 rounded-[35px] text-white why_gradient py-[50px]">
+                <div class="w-4/5 mx-auto flex items-start justify-between">
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center gap-2.5">
+                            <p class="py-1 px-[30px] rounded-full border-2 border-white bg-white/30 w-fit">Быстро</p>
+                            <p class="py-1 px-[30px] rounded-full border-2 border-white bg-white/30 w-fit">Надежный сервис</p>
+                            <p class="py-1 px-[30px] rounded-full border-2 border-white bg-white/30 w-fit">Много отзывов</p>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <p class="py-1 px-[30px] rounded-full border-2 border-white bg-white/30 w-fit">Без комиссии</p>
+                            <p class="py-1 px-[30px] rounded-full border-2 border-white bg-white/30 w-fit">Большой выбор</p>
+                        </div>
+                        <p class="py-1 px-[30px] rounded-full border-2 border-white bg-white/30 w-fit">Эксклюзивные предложения</p>
+                    </div>
+                    <p class="text-[64px] uppercase">Почему мы?</p>
+                </div>
+                <div class="w-4/5 mx-auto grid grid-cols-3 gap-5 items-end">
+                    <div class="h-fit flex flex-col gap-1 py-[30px] px-9 rounded-[25px] border-2 border-white">
+                        <p class="uppercase text-4xl leading-[135.3%]">отзывы и рейтинги</p>
+                        <p class="text-lg leading-[173.3%]">Доверьтесь опыту других. Наши подробные отзывы и рейтинги помогут вам выбрать идеальное место для вашего отдыха. Высокие оценки говорят сами за себя – мы заботимся о вашем комфорте.</p>
+                    </div>
+                    <div class="h-fit flex flex-col gap-1 py-[30px] px-9 rounded-[25px] border-2 border-white">
+                        <p class="uppercase text-4xl leading-[135.3%]">Гарантия Лучшей Цены</p>
+                        <p class="text-lg leading-[173.3%]">Мы уверены в том, что предлагаем лучшие условия на рынке. Если вы найдете более выгодное предложение, мы с радостью сделаем вам специальное предложение. Ваш отдых – наш приоритет.</p>
+                    </div>
+                    <div class="h-fit flex flex-col gap-1 py-[30px] px-9 rounded-[25px] border-2 border-white">
+                        <p class="uppercase text-4xl leading-[135.3%]">Разнообразие и Качество</p>
+                        <p class="text-lg leading-[173.3%]">Имея в своей базе тысячи отелей, мы гарантируем широкий выбор, от уютных гестхаузов до роскошных курортов. Каждый отель, представленный на нашем сервисе, прошел строгий отбор по критериям комфорта и качества обслуживания.</p>
+                    </div>
+                </div>  
+            </div>
+        </div>    
     </div>
 </template>
 
