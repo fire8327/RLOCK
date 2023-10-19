@@ -1,5 +1,5 @@
 <template>
-    <div class="flex items-center gap-5">
+    <div class="flex items-center gap-5 mr-[90px]">
         <button class="relative flex items-center justify-center w-20 h-20 group" :class="prev">
             <span class="bg-[#3E3E3E] w-full h-full flex items-center justify-center z-[1] rounded-[10px] transition-shadow duration-200 group-focus:shadow-[4px_4px_8px_0px_rgba(0,0,0,0.25)_inset] cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" width="44" height="16" viewBox="0 0 44 16" fill="none">
