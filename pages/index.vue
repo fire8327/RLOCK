@@ -88,6 +88,61 @@
             </div>
         </div>    
     </div>
+    <div class="w-full bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[2px] rounded-[35px]">        
+        <div class="w-full bg-[#3E3E3E] text-white py-[60px] rounded-[35px]">
+            <div class="flex items-center gap-[75px] w-4/5 mx-auto">
+                <div class="flex flex-col gap-[30px] w-[65%]">
+                    <p class="text-[64px] uppercase">есть вопросы? <br> мы готовы помочь</p>
+                    <p class="text-lg leading-[173.3%]">Мы уверены в том, что предлагаем лучшие условия на рынке. Если вы найдете более выгодное предложение, мы с радостью сделаем вам специальное предложение. Ваш отдых – наш приоритет.</p>
+                    <div class="flex flex-col gap-6 text-lg leading-[173.3%]">
+                        <NuxtLink to="/" class="flex items-center gap-[18px]">
+                            <img src="/images/icons/phone.svg" alt="">
+                            <span>+7 999 325 99 34</span>
+                        </NuxtLink>
+                        <NuxtLink to="/" class="flex items-center gap-[18px]">
+                            <img src="/images/icons/email.svg" alt="">
+                            <span>example123@rlock.info</span>
+                        </NuxtLink>
+                        <div class="flex items-center gap-[18px]">
+                            <img src="/images/icons/clock.svg" alt="">
+                            <span>Работаем 24/7</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-4 w-[34%]">
+                    <input type="text" class="w-full px-[30px] text-lg leading-[173.3%] py-[12.5px] placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none" placeholder="Имя">
+                    <input type="text" class="w-full px-[30px] text-lg leading-[173.3%] py-[12.5px] placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none" placeholder="Номер телефона">
+                    <textarea class="w-full px-[30px] text-lg leading-[173.3%] py-[12.5px] h-28 placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none resize-none" placeholder="Сообщение"></textarea>
+                    <div class="flex flex-col gap-2.5 w-full leading-[173.3%]">
+                        <div class="flex items-center gap-x-4 gap-y-2.5 flex-wrap text-sm">
+                            <label class="flex items-center gap-2.5">
+                                <input type="radio" name="question" class="w-4 h-4">
+                                Общий вопрос
+                            </label>    
+                            <label class="flex items-center gap-2.5">
+                                <input type="radio" name="question" class="w-4 h-4">
+                                Техническая поддержка
+                            </label>    
+                            <label class="flex items-center gap-2.5">
+                                <input type="radio" name="question" class="w-4 h-4">
+                                Бронирование конкретного объекта
+                            </label>    
+                            <label class="flex items-center gap-2.5">
+                                <input type="radio" name="question" class="w-4 h-4">
+                                Другое
+                            </label>    
+                        </div>
+                        <label class="flex items-start gap-2.5 text-xs">
+                            <input type="checkbox" name="agree" class="w-3 h-3 mt-1">
+                            Я соглашаюсь с условиями политики конфиденциальности 
+                            и обработки персональных данных.
+                        </label>
+                    </div>
+                    <button class="w-full py-[15px] text-center text-2xl leading-[135.3%] rounded-[15px] bg-gradient-to-l from-[#B98CF2] to-[#40BDDB]">Отправить</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script setup>
