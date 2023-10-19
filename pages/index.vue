@@ -18,7 +18,7 @@
                         <div class="absolute w-px h-full top-0 left-1/2 bg-[#B1B1B1]"></div>
                     </div>
                     <input type="text" class="px-6 py-4 rounded-[15px] border border-[#B1B1B1] bg-[#EBEBEB] dark:bg-transparent placeholder-[#B1B1B1]" placeholder="Гости, номера">
-                    <button class="py-[14px] text-center text-white rounded-[15px] bg-gradient-to-l from-[#B98CF2] to-[#40BDDB] text-2xl">Найти</button>
+                    <button class="py-[14px] text-center text-white rounded-[15px] bg-gradient-to-l from-[#B98CF2] to-[#40BDDB] text-2xl transition-all duration-500 hover:shadow-[4px_4px_8px_0px_rgba(0,0,0,0.25)_inset]">Найти</button>
                 </div>
             </div>
         </div>    
@@ -88,6 +88,38 @@
             </div>
         </div>    
     </div>
+    <div class="col-[main-start/full-end] flex flex-col gap-9">
+        <div class="flex items-end justify-between wrapper w-full">
+            <p class="uppercase text-[64px] max-w-[549px] text-[#3E3E3E] dark:text-white">популярные варианты</p>
+            <SliderButtons :prev="'variantsPrev'" :next="'variantsNext'"/>
+        </div>
+        <Swiper :slides-per-view="3.5" :space-between="20" :loop="true" :modules="[SwiperNavigation]" :navigation="{prevEl:'.variantsPrev', nextEl:'.variantsNext'}" class="w-full">
+            <SwiperSlide>
+                <VariantsSlide/>
+            </SwiperSlide>
+            <SwiperSlide>
+                <VariantsSlide/>
+            </SwiperSlide>
+            <SwiperSlide>
+                <VariantsSlide/>
+            </SwiperSlide>
+            <SwiperSlide>
+                <VariantsSlide/>
+            </SwiperSlide>
+            <SwiperSlide>
+                <VariantsSlide/>
+            </SwiperSlide>
+            <SwiperSlide>
+                <VariantsSlide/>
+            </SwiperSlide>
+            <SwiperSlide>
+                <VariantsSlide/>
+            </SwiperSlide>
+            <SwiperSlide>
+                <VariantsSlide/>
+            </SwiperSlide>
+        </Swiper>
+    </div>
     <div class="w-full bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[2px] rounded-[35px]">        
         <div class="w-full bg-[#3E3E3E] text-white py-[60px] rounded-[35px]">
             <div class="flex items-center gap-[75px] w-4/5 mx-auto">
@@ -146,5 +178,4 @@
 </template>
 
 <script setup>
-
 </script>

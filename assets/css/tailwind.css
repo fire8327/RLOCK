@@ -27,7 +27,7 @@
     }    
 
     .wrapper{ 
-        @apply mx-auto w-[calc(100%-var(--widthContentMargin)*2)] max-w-[var(--widthContent)]
+        @apply mr-auto max-w-[var(--widthContent)]
     }
 
     .container{        
