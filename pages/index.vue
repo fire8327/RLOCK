@@ -94,29 +94,8 @@
             <SliderButtons :prev="'variantsPrev'" :next="'variantsNext'"/>
         </div>
         <Swiper :slides-per-view="3.5" :space-between="20" :loop="true" :modules="[SwiperNavigation]" :navigation="{prevEl:'.variantsPrev', nextEl:'.variantsNext'}" class="w-full">
-            <SwiperSlide>
-                <VariantsSlide/>
-            </SwiperSlide>
-            <SwiperSlide>
-                <VariantsSlide/>
-            </SwiperSlide>
-            <SwiperSlide>
-                <VariantsSlide/>
-            </SwiperSlide>
-            <SwiperSlide>
-                <VariantsSlide/>
-            </SwiperSlide>
-            <SwiperSlide>
-                <VariantsSlide/>
-            </SwiperSlide>
-            <SwiperSlide>
-                <VariantsSlide/>
-            </SwiperSlide>
-            <SwiperSlide>
-                <VariantsSlide/>
-            </SwiperSlide>
-            <SwiperSlide>
-                <VariantsSlide/>
+            <SwiperSlide v-for="variant in variants">
+                <VariantsSlide v-bind="variant"/>
             </SwiperSlide>
         </Swiper>
     </div>
@@ -181,33 +160,14 @@
             <SliderButtons :prev="'reviewsPrev'" :next="'reviewsNext'"/>
         </div>
         <Swiper :slides-per-view="2.1" :space-between="20" :loop="true" :modules="[SwiperNavigation]" :navigation="{prevEl:'.reviewsPrev', nextEl:'.reviewsNext'}" class="w-full">
-            <SwiperSlide>
-                <ReviewsSlide/>
-            </SwiperSlide>
-            <SwiperSlide>
-                <ReviewsSlide/>
-            </SwiperSlide>
-            <SwiperSlide>
-                <ReviewsSlide/>
-            </SwiperSlide>
-            <SwiperSlide>
-                <ReviewsSlide/>
-            </SwiperSlide>
-            <SwiperSlide>
-                <ReviewsSlide/>
-            </SwiperSlide>
-            <SwiperSlide>
-                <ReviewsSlide/>
-            </SwiperSlide>
-            <SwiperSlide>
-                <ReviewsSlide/>
-            </SwiperSlide>
-            <SwiperSlide>
-                <ReviewsSlide/>
+            <SwiperSlide v-for="review in reviews">
+                <ReviewsSlide v-bind="review"/>
             </SwiperSlide>
         </Swiper>
     </div>
 </template>
 
 <script setup>
+    const { data: variants, error: variantsError } = await useFetch(`https://fire8327.github.io/JSONs/variants.json`)
+    const { data: reviews, error: reviewsError } = await useFetch(`https://fire8327.github.io/JSONs/reviews.json`)
 </script>
