@@ -154,12 +154,12 @@
             </div>
         </div>
     </div>
-    <div class="col-[main-start/full-end] flex flex-col gap-9">
+    <div class="flex flex-col gap-9">
         <div class="flex items-end justify-between wrapper w-full">
             <p class="uppercase text-[64px] text-[#3E3E3E] dark:text-white">Последние отзывы</p>
             <SliderButtons :prev="'reviewsPrev'" :next="'reviewsNext'"/>
         </div>
-        <Swiper :slides-per-view="2.1" :space-between="20" :loop="true" :modules="[SwiperNavigation]" :navigation="{prevEl:'.reviewsPrev', nextEl:'.reviewsNext'}" class="w-full">
+        <Swiper :slides-per-view="2" :space-between="20" :loop="true" :modules="[SwiperNavigation]" :navigation="{prevEl:'.reviewsPrev', nextEl:'.reviewsNext'}" class="w-full">
             <SwiperSlide v-for="review in reviews">
                 <ReviewsSlide v-bind="review"/>
             </SwiperSlide>
