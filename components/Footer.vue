@@ -1,5 +1,5 @@
 <template>
-    <footer class="grid-container mb-[22px] text-white/50 text-xl font-light">
+    <footer class="grid-container mb-[22px] text-white/50 text-xl font-light mt-auto" ref="height">
         <div class="bg-[#121212] border-2 border-white dark:bg-[#171717] rounded-[35px] pt-10 pb-[89px]">
             <div class="flex flex-col items-center gap-11 w-4/5 mx-auto">
                 <div class="flex justify-between items-start gap-[86px]">
@@ -50,5 +50,12 @@
 </template>
 
 <script setup>
-
+    /* const height = ref()
+    const block = useHeightBlock()
+    onMounted(() => {
+        block.footerHeight = height.value.clientHeight
+        window.addEventListener("resize", () => {
+            block.footerHeight = height.value.clientHeight
+        })
+    }) */
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col gap-7">
+    <div class="flex flex-col gap-7 pt-12">
         <div class="flex items-center gap-[69px] text-black dark:text-white justify-between">
             <p class="text-[64px] uppercase pl-1.5">rlock</p>
             <p class="text-xl font-light leading-[172.8%]">В мире, где каждая поездка – это возможность создать свой уникальный момент, Rlock становится вашим надежным союзником в создании незабываемого отдыха, мы – кураторы ваших лучших воспоминаний.</p>
@@ -154,7 +154,7 @@
             </div>
         </div>
     </div>
-    <div class="flex flex-col gap-9">
+    <div class="flex flex-col gap-9 pb-20">
         <div class="flex items-end justify-between wrapper w-full">
             <p class="uppercase text-[64px] text-[#3E3E3E] dark:text-white">Последние отзывы</p>
             <SliderButtons :prev="'reviewsPrev'" :next="'reviewsNext'"/>

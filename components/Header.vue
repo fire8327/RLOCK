@@ -1,5 +1,5 @@
 <template>
-    <header class="grid-container text-black dark:text-white pt-[30px]">
+    <header class="grid-container text-black dark:text-white pt-[30px]" ref="height">
         <div class="flex items-center justify-between">            
             <UseDark v-slot="{ isDark, toggleDark }">
                 <button @click="toggleDark()" class="text-2xl font-black">
@@ -56,4 +56,13 @@
 
 <script setup>
     import { UseDark } from '@vueuse/components'
+
+    /* const height = ref()
+    const block = useHeightBlock()
+    onMounted(() => {
+        block.headerHeight = height.value.clientHeight
+        window.addEventListener("resize", () => {
+            block.headerHeight = height.value.clientHeight
+        })
+    }) */
 </script>
