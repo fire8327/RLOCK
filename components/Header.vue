@@ -65,4 +65,14 @@
             block.headerHeight = height.value.clientHeight
         })
     }) */
+    
+
+    const authStore = useAuthStore()
+    const logUserOut = authStore.logUserOut
+    const router = useRouter()
+    const logout = () => {
+        logUserOut()
+        isProfileDown.value = false
+        router.push("/login")
+    }
 </script>
