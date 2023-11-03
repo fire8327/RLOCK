@@ -1,5 +1,5 @@
 export default defineNuxtRouteMiddleware((to) => {
-    const authStore = useAuthStore()
+    /* const authStore = useAuthStore()
     const token = useCookie('token')
 
     if (token.value) {
@@ -13,5 +13,5 @@ export default defineNuxtRouteMiddleware((to) => {
     if (!token.value && to?.name !== 'login') {
         abortNavigation()
         return navigateTo('/login')
-    }
+    } */
 })

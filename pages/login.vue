@@ -9,19 +9,37 @@
 </template>
 
 <script setup>
-    const authStore = useAuthStore()
-    const authenticateUser = authStore.authenticateUser
+    /* const authStore = useAuthStore()
+    const authenticateUser = authStore.authenticateUser */
 
     const user = ref({
-        username: "kminchelle",
-        password: "0lelplR"
+        username: "admin",
+        password: "12345"
     })
-    const router = useRouter()    
+    /* const router = useRouter()    
     
     const login = async () => {
         await authenticateUser(user.value)
         if (authStore.authenticated) {
             router.push('/')
+        }
+    } */
+
+    const login = async () => {
+        const { data, error, pending } = await useFetch("https://seahorse-app-2brlp.ondigitalocean.app/api/admin/login", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: {
+                login: user.value.username,
+                password: user.value.password
+            }
+        })
+
+        if(data.value) {
+            console.log(data.value)
+        }
+        if(error.value) {
+            console.log(error.value)
         }
     }
 </script>
