@@ -1,16 +1,15 @@
 <template>
     <div class="flex flex-col gap-7 pt-12">
-        <div class="flex items-center gap-[69px] text-black dark:text-white justify-between">
-            <p class="text-[64px] uppercase pl-1.5">rlock</p>
-            <p class="text-xl font-light leading-[172.8%]">В мире, где каждая поездка – это возможность создать свой уникальный момент, Rlock становится вашим надежным союзником в создании незабываемого отдыха, мы – кураторы ваших лучших воспоминаний.</p>
+        <img src="/images/open/desktop.png" alt="" class="absolute top-0 left-0 z-[0] w-full max-md:hidden">
+        <img src="/images/open/mobile.png" alt="" class="absolute top-0 left-0 w-full md:hidden">
+        <div class="flex max-md:flex-col md:items-center gap-2.5 md:gap-12 xl:gap-[69px] text-white md:justify-between z-[1]">
+            <p class="text-[32px] md:text-[50px] xl:text-[64px] uppercase pl-1.5 leading-[135.3%]">rlock</p>
+            <p class="text-base md:text-lg xl:text-xl font-light leading-[172.8%]">В мире, где каждая поездка – это возможность создать свой уникальный момент, Rlock становится вашим надежным союзником в создании незабываемого отдыха, мы – кураторы ваших лучших воспоминаний.</p>
         </div>
-        <div class="flex flex-col gap-5">
-            <div class="w-full relative">
-                <img src="/images/open/bg.png" alt="">
-                <p class="uppercase text-[64px] text-white absolute z-[1] bottom-[30px] left-1/2 -translate-x-1/2 w-4/5">Откройте дверь к вашему идеальному дому </p>
-            </div>
+        <div class="flex flex-col gap-5 z-[1]">
+            <p class="uppercase max-lg:hidden text-[52px] xl:text-[64px] text-white">Откройте дверь к вашему идеальному дому </p>
             <div class="w-full py-6 rounded-[30px] border border-[#7B7B7B] dark:border-white bg-white">
-                <div class="w-4/5 mx-auto grid grid-cols-4 gap-5 font-light">
+                <div class="px-6 md:px-12 xl:px-[90px] grid grid-cols-1 lg:grid-cols-4 gap-5 font-light">
                     <input type="text" class="px-6 py-4 rounded-[15px] border border-[#B1B1B1] bg-[#EBEBEB] dark:bg-transparent placeholder-[#B1B1B1]" placeholder="Куда едем?">
                     <div class="flex items-center bg-[#EBEBEB] dark:bg-transparent rounded-[15px] border border-[#B1B1B1] relative py-4">
                         <input type="date" class="w-1/2 px-6 bg-[#EBEBEB] dark:bg-transparent rounded-l-[15px]">
