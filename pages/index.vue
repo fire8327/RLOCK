@@ -189,7 +189,7 @@
                         </div>
                     </div>
                 </div>
-                <FormKit type="form" form-class="flex flex-col gap-4 w-full lg:w-[35%]" @submit="submitForm" :actions="false">
+                <FormKit id="feedbackForm" type="form" form-class="flex flex-col gap-4 w-full lg:w-[35%]" @submit="submitForm" :actions="false">
                     <FormKit v-model="form.name" validation="required|length:2" name="Имя" type="text" outer-class="$remove:mb-4" inner-class="$remove:mb-1 rounded-[15px] $remove:max-w-md $remove:ring-1 $remove:ring-gray-400 $remove:focus-within:ring-2" message-class="text-[#E71616]" input-class="$remove:text-gray-700 $remove:border-none w-full px-7 text-lg leading-[173.3%] py-[12.5px] placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none" placeholder="Имя"/>
                     <FormKit v-model="form.phone" validation="required|length:11" name="Номер телефона" type="text" outer-class="$remove:mb-4" inner-class="$remove:mb-1 rounded-[15px] $remove:max-w-md $remove:ring-1 $remove:ring-gray-400 $remove:focus-within:ring-2" message-class="text-[#E71616]" input-class="$remove:text-gray-700 $remove:border-none w-full px-7 text-lg leading-[173.3%] py-[12.5px] placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none" placeholder="Номер телефона"/>
                     <FormKit v-model="form.msg" name="Сообщение" type="textarea" outer-class="$remove:mb-4" inner-class="$remove:mb-1 rounded-[15px] $remove:max-w-md $remove:ring-1 $remove:ring-gray-400 $remove:focus-within:ring-2" input-class="$remove:text-gray-700 $remove:border-none w-full px-7 text-lg leading-[173.3%] py-[12.5px] h-28 placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none resize-none" placeholder="Сообщение"></FormKit>
@@ -207,6 +207,7 @@
 </template>
 
 <script setup>
+    import { reset } from '@formkit/core'
     const { data: variants, error: variantsError } = await useFetch(`https://fire8327.github.io/JSONs/variants.json`)
     const { data: reviews, error: reviewsError } = await useFetch(`https://fire8327.github.io/JSONs/reviews.json`)
 
@@ -238,12 +239,7 @@
             },
             method:'post'        
 	    })
-        /* form.value = {
-            name: "",
-            phone: "",
-            msg: "",
-            radio: ""
-        } */
+        reset('feedbackForm')
     }
 </script>
 
