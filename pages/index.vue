@@ -1,13 +1,13 @@
 <template>
     <div class="flex flex-col gap-7 pt-12">
-        <img src="/images/open/desktop.png" alt="" class="absolute top-0 left-0 z-[0] w-full max-md:hidden">
+        <img src="/images/open/desktop.png" alt="" class="absolute top-0 left-0 z-[0] w-full lg:h-[550px] xl:h-[625px] max-md:hidden">
         <img src="/images/open/mobile.png" alt="" class="absolute top-0 left-0 w-full md:hidden">
         <div class="flex max-md:flex-col md:items-center gap-2.5 md:gap-12 xl:gap-[69px] text-white md:justify-between z-[1]">
             <p class="text-[32px] md:text-[50px] xl:text-[64px] uppercase pl-1.5 leading-[135.3%]">rlock</p>
             <p class="text-base md:text-lg xl:text-xl font-light leading-[172.8%]">В мире, где каждая поездка – это возможность создать свой уникальный момент, Rlock становится вашим надежным союзником в создании незабываемого отдыха, мы – кураторы ваших лучших воспоминаний.</p>
         </div>
         <div class="flex flex-col gap-5 z-[1]">
-            <p class="uppercase max-lg:hidden text-[52px] xl:text-[64px] text-white">Откройте дверь к вашему идеальному дому </p>
+            <p class="uppercase max-lg:hidden text-[52px] xl:text-[64px] text-white max-w-[1200px]">Откройте дверь к вашему идеальному дому </p>
             <div class="w-full py-6 rounded-[30px] border border-[#7B7B7B] dark:border-white bg-white">
                 <div class="px-6 md:px-12 xl:px-[90px] grid grid-cols-1 lg:grid-cols-4 gap-5 font-light">
                     <input type="text" class="px-6 py-4 rounded-[15px] border border-[#B1B1B1] bg-[#EBEBEB] dark:bg-transparent placeholder-[#B1B1B1]" placeholder="Куда едем?">
@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>    
-        <div class="flex flex-col gap-12 md:gap-16 xl:gap-20">
+        <div class="flex flex-col gap-12 md:gap-16 xl:gap-20 mt-5 md:mt-9 xl:mt-12">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
                 <div class="bg-gradient-to-br from-[#48BBDE] to-[#B190F1] rounded-[25px] p-[3px] flex items-center justify-center">
                     <div class="flex flex-col items-center h-full text-center px-10 xl:px-11 py-6 md:py-12 xl:py-[74px] w-full rounded-[25px] bg-white text-[#131313] dark:bg-[#121212] dark:text-white">

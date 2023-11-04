@@ -1,6 +1,6 @@
 <template>
-    <header class="text-white pt-[30px] relative flex w-full grid-container z-40" ref="height">
-        <div class="max-lg:hidden">
+    <header class="text-white pt-[30px] relative flex z-40" ref="height">
+        <div class="max-lg:hidden w-full grid-container">
             <div class="flex items-center justify-between">            
                 <UseDark v-slot="{ isDark, toggleDark }">
                     <button @click="toggleDark()">
