@@ -2,12 +2,12 @@
     <div class="flex flex-col gap-7 pt-12">
         <img src="/images/open/desktop.png" alt="" class="absolute top-0 left-0 z-[0] w-full lg:h-[550px] xl:h-[625px] max-md:hidden">
         <img src="/images/open/mobile.png" alt="" class="absolute top-0 left-0 w-full md:hidden">
-        <div class="flex max-md:flex-col md:items-center gap-2.5 md:gap-12 xl:gap-[69px] text-white md:justify-between z-[1] NeutralFace">
-            <p class="text-[32px] md:text-[50px] xl:text-[64px] uppercase pl-1.5 leading-[135.3%]">rlock</p>
+        <div class="flex max-md:flex-col md:items-center gap-2.5 md:gap-12 xl:gap-[69px] text-white md:justify-between z-[1]">
+            <p class="text-[32px] md:text-[50px] xl:text-[64px] uppercase pl-1.5 leading-[135.3%] NeutralFace">rlock</p>
             <p class="text-base md:text-lg xl:text-xl font-light leading-[172.8%]">В мире, где каждая поездка – это возможность создать свой уникальный момент, Rlock становится вашим надежным союзником в создании незабываемого отдыха, мы – кураторы ваших лучших воспоминаний.</p>
         </div>
         <div class="flex flex-col gap-5 z-[1]">
-            <p class="uppercase max-lg:hidden text-[52px] xl:text-[64px] text-white max-w-[1200px]">Откройте дверь к вашему идеальному дому </p>
+            <p class="uppercase max-lg:hidden text-[52px] xl:text-[64px] text-white max-w-[1200px] NeutralFace">Откройте дверь к вашему идеальному дому </p>
             <div class="w-full py-6 rounded-[30px] border border-[#7B7B7B] dark:border-white bg-white">
                 <div class="px-6 md:px-12 xl:px-[90px] grid grid-cols-1 lg:grid-cols-4 gap-5 font-light">
                     <input type="text" class="px-6 py-4 rounded-[15px] border border-[#B1B1B1] bg-[#EBEBEB] dark:bg-transparent placeholder-[#B1B1B1]" placeholder="Куда едем?">
@@ -171,7 +171,7 @@
     <div class="w-full bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[2px] rounded-[35px] mb-20">        
         <div class="w-full h-full dark:bg-[#3E3E3E] text-white py-10 md:py-12 xl:py-[60px] rounded-[35px]">
             <div class="flex max-lg:flex-col lg:items-center gap-12 md:gap-16 xl:gap-[75px] px-6 md:px-12 xl:px-[90px]">
-                <div class="flex flex-col gap-[30px] w-full lg:w-[65%]">
+                <div class="flex flex-col gap-[30px] w-full lg:w-[70%]">
                     <p class="text-[40px] md:text-[50px] xl:text-[64px] uppercase NeutralFace">есть вопросы? <br> мы готовы помочь</p>
                     <p class="text-lg leading-[173.3%]">Мы уверены в том, что предлагаем лучшие условия на рынке. Если вы найдете более выгодное предложение, мы с радостью сделаем вам специальное предложение. Ваш отдых – наш приоритет.</p>
                     <div class="flex flex-col gap-6 text-lg leading-[173.3%]">
