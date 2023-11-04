@@ -189,19 +189,17 @@
                         </div>
                     </div>
                 </div>
-                <FormKit id="feedback" type="form" form-class="flex flex-col gap-4 w-full lg:w-[35%]" @submit="submitForm" :actions="false">
-                    <FormKit v-model="form.name" validation="required|length:2" name="Имя" type="text" message-class="text-[#E71616]" input-class="$remove:border-none w-full px-7 text-lg leading-[173.3%] py-[12.5px] placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none" placeholder="Имя"/>
-                    <FormKit v-model="form.phone" validation="required|length:11" name="Номер телефона" type="text" message-class="text-[#E71616]" input-class="$remove:border-none w-full px-7 text-lg leading-[173.3%] py-[12.5px] placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none" placeholder="Номер телефона"/>
-                    <FormKit v-model="form.msg" name="msg" type="textarea" input-class="$remove:border-none w-full px-7 text-lg leading-[173.3%] py-[12.5px] h-28 placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none resize-none" placeholder="Сообщение"></FormKit>
+                <FormKit type="form" form-class="flex flex-col gap-4 w-full lg:w-[35%]" @submit="submitForm" :actions="false">
+                    <FormKit v-model="form.name" validation="required|length:2" name="Имя" type="text" outer-class="$remove:mb-4" inner-class="$remove:mb-1 rounded-[15px] $remove:max-w-md $remove:ring-1 $remove:ring-gray-400 $remove:focus-within:ring-2" message-class="text-[#E71616]" input-class="$remove:text-gray-700 $remove:border-none w-full px-7 text-lg leading-[173.3%] py-[12.5px] placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none" placeholder="Имя"/>
+                    <FormKit v-model="form.phone" validation="required|length:11" name="Номер телефона" type="text" outer-class="$remove:mb-4" inner-class="$remove:mb-1 rounded-[15px] $remove:max-w-md $remove:ring-1 $remove:ring-gray-400 $remove:focus-within:ring-2" message-class="text-[#E71616]" input-class="$remove:text-gray-700 $remove:border-none w-full px-7 text-lg leading-[173.3%] py-[12.5px] placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none" placeholder="Номер телефона"/>
+                    <FormKit v-model="form.msg" name="Сообщение" type="textarea" outer-class="$remove:mb-4" inner-class="$remove:mb-1 rounded-[15px] $remove:max-w-md $remove:ring-1 $remove:ring-gray-400 $remove:focus-within:ring-2" input-class="$remove:text-gray-700 $remove:border-none w-full px-7 text-lg leading-[173.3%] py-[12.5px] h-28 placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none resize-none" placeholder="Сообщение"></FormKit>
                     <div class="flex flex-col gap-2.5 w-full leading-[173.3%]">
-                        <FormKit type="radio" decorator-Icon="radioDecorator" wrapper-class="flex items-center gap-2.5" decorator-class="$remove:bg-white w-4 h-4 border border-white" options-class="flex items-center gap-x-4 gap-y-2.5 flex-wrap" fieldset-class="$remove:border" v-model="form.radio" :options="['Общий вопрос','Техническая поддержка','Бронирование конкретного объекта','Другое']"/>
-                        <label class="flex items-start gap-2.5 text-xs">
-                            <input type="checkbox" name="agree" class="w-3 h-3 mt-1">
-                            Я соглашаюсь с условиями политики конфиденциальности 
-                            и обработки персональных данных.
-                        </label>
+                        <FormKit type="radio" wrapper-class="flex items-center gap-2.5 $remove:mb-1" outer-class="$remove:mb-4" decorator-icon-class="$remove:p-[5px]" decorator-class="$remove:bg-white $remove:w-5 $remove:h-5 $remove:bg-gradient-to-b $remove:ring-1 $remove:mr-2 $remove:peer-checked:text-blue-500 peer-checked:text-white w-4 h-4 border border-white" 
+                        options-class="flex items-center gap-x-4 gap-y-2.5 flex-wrap" fieldset-class="$remove:border $remove:px-2 $remove:pb-1" v-model="form.radio" 
+                        :options="['Общий вопрос','Техническая поддержка','Бронирование конкретного объекта','Другое']"/>
+                        <FormKit type="checkbox" validation="accepted" decorator-icon-class="$remove:p-[3px] p-[1px]" decorator-class="$remove:mr-2 $remove:w-5 $remove:h-5 w-3 h-3 mt-1 $remove:bg-white $remove:bg-gradient-to-b $remove:ring-1 $remove:peer-checked:text-blue-500 peer-checked:text-white border border-white" wrapper-class="$remove:mb-1 $remove:items-center items-start gap-2.5" :validation-messages="{accepted: 'Пожалуйста, примите условия политики конфиденциальности и обработки персональных данных'}" name="Согласие" label="Я соглашаюсь с условиями политики конфиденциальности и обработки персональных данных"/>
                     </div>
-                    <FormKit type="submit" input-class="$remove:bg-blue-600 $remove:focus-visible:outline-2 $remove:inline-flex $remove:text-white $remove:text-sm w-full py-[15px] text-center text-2xl leading-[135.3%] rounded-[15px] bg-white text-[#3E3E3E] dark:text-white dark:bg-gradient-to-l from-[#B98CF2] to-[#40BDDB]">Отправить</FormKit>
+                    <FormKit type="submit" wrapper-class="$remove:mb-1" outer-class="$remove:mb-4" input-class="$remove:focus-visible:outline-blue-600 $remove:focus-visible:outline-offset-2 $remove:bg-blue-600 $remove:focus-visible:outline-2 $remove:inline-flex $remove:text-white $remove:text-sm w-full py-[15px] text-center text-2xl leading-[135.3%] rounded-[15px] bg-white text-[#3E3E3E] dark:text-white dark:bg-gradient-to-l from-[#B98CF2] to-[#40BDDB]">Отправить</FormKit>
                 </FormKit>
             </div>
         </div>
@@ -224,6 +222,8 @@
     const chat_id = "-4029823062"
     const URL = `https://api.telegram.org/bot${token}/sendMessage`
 
+    let message = ref({title:null, type:true})
+
     const submitForm = async () => {
         let msg = "<b>Сообщение с сайта!</b>\n"
         + `<b>Имя:</b> ${form.value.name}\n`
@@ -231,21 +231,27 @@
         + `<b>Сообщение:</b> ${form.value.msg}\n` 
         + `<b>Вопрос:</b> ${form.value.radio}\n` 
         const {data, error} = await useFetch(URL,{
-		body:{
-			'chat_id': chat_id,
-			'parse_mode': 'html',
-			'text': msg
-		},
-		method:'post'
-	})
-    if(data.value) {
-        reset('feedback')
+            body:{
+                'chat_id': chat_id,
+                'parse_mode': 'html',
+                'text': msg
+            },
+            method:'post'        
+	    })
+        /* form.value = {
+            name: "",
+            phone: "",
+            msg: "",
+            radio: ""
+        } */
     }
-}
 </script>
 
 <style>
     .swiper-scrollbar-drag {
         @apply bg-gradient-to-l from-[#B98CF2] to-[#40BDDB]
+    }
+    .formkit-wrapper > span {
+        @apply text-white mt-0        
     }
 </style>

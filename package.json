@@ -21,6 +21,7 @@
     "nuxt-swiper": "^1.2.2"
   },
   "dependencies": {
+    "@formkit/icons": "^1.2.2",
     "@vueuse/components": "^10.5.0"
   },
   "overrides": {
