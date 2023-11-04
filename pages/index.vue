@@ -2,7 +2,7 @@
     <div class="flex flex-col gap-7 pt-12">
         <img src="/images/open/desktop.png" alt="" class="absolute top-0 left-0 z-[0] w-full lg:h-[550px] xl:h-[625px] max-md:hidden">
         <img src="/images/open/mobile.png" alt="" class="absolute top-0 left-0 w-full md:hidden">
-        <div class="flex max-md:flex-col md:items-center gap-2.5 md:gap-12 xl:gap-[69px] text-white md:justify-between z-[1]">
+        <div class="flex max-md:flex-col md:items-center gap-2.5 md:gap-12 xl:gap-[69px] text-white md:justify-between z-[1] NeutralFace">
             <p class="text-[32px] md:text-[50px] xl:text-[64px] uppercase pl-1.5 leading-[135.3%]">rlock</p>
             <p class="text-base md:text-lg xl:text-xl font-light leading-[172.8%]">В мире, где каждая поездка – это возможность создать свой уникальный момент, Rlock становится вашим надежным союзником в создании незабываемого отдыха, мы – кураторы ваших лучших воспоминаний.</p>
         </div>
@@ -25,7 +25,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
                 <div class="bg-gradient-to-br from-[#48BBDE] to-[#B190F1] rounded-[25px] p-[3px] flex items-center justify-center">
                     <div class="flex flex-col items-center h-full text-center px-10 xl:px-11 py-6 md:py-12 xl:py-[74px] w-full rounded-[25px] bg-white text-[#131313] dark:bg-[#121212] dark:text-white">
-                        <p class="text-[64px] md:text-[80px] xl:text-[96px]">150+</p>
+                        <p class="text-[64px] md:text-[80px] xl:text-[96px] NeutralFace">150+</p>
                         <p class="text-2xl md:text-3xl xl:text-4xl leading-[135.3%] font-light -mt-2.5">вариантов: <br> квартиры, отели, дома</p>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                     <div class="flex flex-col gap-2.5 lg:gap-1 py-6 md:py-8 xl:py-10 px-6 md:px-12 xl:px-20 rounded-[25px] bg-gradient-to-r from-[#d2b4f7] to-[#88d3ea] backdrop-blur-[50px] dark:from-[#595959]/50 dark:to-[#595959]/50">
                         <p class="text-2xl md:text-3xl xl:text-4xl font-light">Работаем в</p>
                         <div class="flex items-center gap-4 md:gap-6 xl:gap-7">
-                            <p class="text-[64px] md:text-[80px] xl:text-[96px]">95</p>
+                            <p class="text-[64px] md:text-[80px] xl:text-[96px] NeutralFace">95</p>
                             <p class="text-2xl md:text-3xl xl:text-4xl leading-[135.3%] font-light">субъектах России</p>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                     <p class="grow py-6 xl:py-10 flex items-center justify-center text-center text-2xl xl:text-[29px] leading-[135.3%] font-light px-8 rounded-[23px] bg-gradient-to-r from-[#d2b4f7] to-[#88d3ea] backdrop-blur-[50px] dark:from-[#595959]/50 dark:to-[#595959]/50 text-white">Удобная система бронирования жилья</p>
                     <div class="flex items-center justify-center bg-gradient-to-br from-[#48BBDE] to-[#B190F1] rounded-[25px] p-[3px]">
                         <div class="h-full w-full flex flex-col items-center text-center py-6 xl:py-5 px-7 md:px-12 xl:px-[76px] rounded-[25px] bg-white text-[#131313] dark:bg-[#121212] dark:text-white">
-                            <p class="text-[64px]">24/7</p>
+                            <p class="text-[64px] NeutralFace">24/7</p>
                             <p class="text-2xl leading-[135.3%] font-light -mt-2.5">Служба поддержки <br> на связи!</p>
                         </div>
                     </div>
@@ -59,19 +59,19 @@
                         <p class="py-1 px-7 rounded-full border-2 border-white bg-white/30 w-fit">Большой выбор</p>
                         <p class="py-1 px-7 rounded-full border-2 border-white bg-white/30 w-fit">Эксклюзивные предложения</p>
                     </div>
-                    <p class="text-[40px] md:text-[52px] xl:text-[64px] uppercase leading-[135.3%] max-lg:order-first">Почему мы?</p>
+                    <p class="text-[40px] md:text-[52px] xl:text-[64px] uppercase leading-[135.3%] max-lg:order-first NeutralFace">Почему мы?</p>
                 </div>                
                 <div class="px-6 md:px-12 xl:px-[90px] grid grid-cols-1 lg:grid-cols-3 gap-5 items-end">
                     <div class="h-fit flex flex-col xl:gap-1 py-6 md:py-7 xl:py-8 px-5 md:px-7 xl:px-9 rounded-[25px] border-2 border-white">
-                        <p class="uppercase text-[32px] xl:text-4xl leading-[135.3%]">отзывы и рейтинги</p>
+                        <p class="uppercase text-[32px] xl:text-4xl leading-[135.3%] NeutralFace">отзывы и рейтинги</p>
                         <p class="text-base xl:text-lg leading-[173.3%]">Доверьтесь опыту других. Наши подробные отзывы и рейтинги помогут вам выбрать идеальное место для вашего отдыха. Высокие оценки говорят сами за себя – мы заботимся о вашем комфорте.</p>
                     </div>
                     <div class="h-fit flex flex-col xl:gap-1 py-6 md:py-7 xl:py-8 px-5 md:px-7 xl:px-9 rounded-[25px] border-2 border-white">
-                        <p class="uppercase text-[32px] xl:text-4xl leading-[135.3%]">Гарантия Лучшей Цены</p>
+                        <p class="uppercase text-[32px] xl:text-4xl leading-[135.3%] NeutralFace">Гарантия Лучшей Цены</p>
                         <p class="text-base xl:text-lg leading-[173.3%]">Мы уверены в том, что предлагаем лучшие условия на рынке. Если вы найдете более выгодное предложение, мы с радостью сделаем вам специальное предложение. Ваш отдых – наш приоритет.</p>
                     </div>
                     <div class="h-fit flex flex-col xl:gap-1 py-6 md:py-7 xl:py-8 px-5 md:px-7 xl:px-9 rounded-[25px] border-2 border-white">
-                        <p class="uppercase text-[32px] xl:text-4xl leading-[135.3%]">Разнообразие и Качество</p>
+                        <p class="uppercase text-[32px] xl:text-4xl leading-[135.3%] NeutralFace">Разнообразие и Качество</p>
                         <p class="text-base xl:text-lg leading-[173.3%]">Имея в своей базе тысячи отелей, мы гарантируем широкий выбор, от уютных гестхаузов до роскошных курортов. Каждый отель, представленный на нашем сервисе, прошел строгий отбор по критериям комфорта и качества обслуживания.</p>
                     </div>
                 </div>  
@@ -80,7 +80,7 @@
     </div>
     <div class="col-[main-start/full-end] flex flex-col gap-10">
         <div class="flex items-end justify-between wrapper w-full">
-            <p class="uppercase text-[40px] md:text-[50px] xl:text-[64px] max-w-[549px] text-[#3E3E3E] dark:text-white">популярные варианты</p>
+            <p class="uppercase text-[40px] md:text-[50px] xl:text-[64px] max-w-[549px] text-[#3E3E3E] dark:text-white NeutralFace">популярные варианты</p>
             <SliderButtons class="max-lg:hidden" :prev="'variantsPrev'" :next="'variantsNext'"/>
         </div>
         <div class="flex flex-col gap-5">            
@@ -112,7 +112,7 @@
         <div class="flex grow gap-4 max-xl:flex-col xl:items-end rounded-[30px] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[2px] text-white h-full">
             <div class="flex flex-col gap-9 px-6 max-md:pt-10 xl:pr-0 xl:pl-[90px] max-xl:pb-0 md:py-12 h-full">
                 <div class="flex flex-col gap-4">
-                    <p class="text-[32px] md:text-4xl xl:text-[40px] leading-[135.3%] uppercase">Мобильное приложение</p>
+                    <p class="text-[32px] md:text-4xl xl:text-[40px] leading-[135.3%] uppercase NeutralFace">Мобильное приложение</p>
                     <div class="flex flex-col gap-2.5 text-lg font-medium leading-[173.3%]">
                         <div class="flex items-start gap-2.5">
                             <div class="bg-white w-2.5 h-2.5 rounded-[3px] shrink-0 mt-2.5"></div>
@@ -147,7 +147,7 @@
     </div>
     <div class="flex flex-col gap-9">
         <div class="flex items-end justify-between wrapper w-full">
-            <p class="uppercase text-[40px] md:text-[50px] xl:text-[64px] max-w-[549px] text-[#3E3E3E] dark:text-white">Последние отзывыы</p>
+            <p class="uppercase text-[40px] md:text-[50px] xl:text-[64px] max-w-[549px] text-[#3E3E3E] dark:text-white NeutralFace">Последние отзывыы</p>
             <SliderButtons class="max-lg:hidden" :prev="'reviewsPrev'" :next="'reviewsNext'"/>
         </div>
         <div class="flex flex-col gap-5">            
@@ -172,7 +172,7 @@
         <div class="w-full h-full dark:bg-[#3E3E3E] text-white py-10 md:py-12 xl:py-[60px] rounded-[35px]">
             <div class="flex max-lg:flex-col lg:items-center gap-12 md:gap-16 xl:gap-[75px] px-6 md:px-12 xl:px-[90px]">
                 <div class="flex flex-col gap-[30px] w-full lg:w-[65%]">
-                    <p class="text-[40px] md:text-[50px] xl:text-[64px] uppercase">есть вопросы? <br> мы готовы помочь</p>
+                    <p class="text-[40px] md:text-[50px] xl:text-[64px] uppercase NeutralFace">есть вопросы? <br> мы готовы помочь</p>
                     <p class="text-lg leading-[173.3%]">Мы уверены в том, что предлагаем лучшие условия на рынке. Если вы найдете более выгодное предложение, мы с радостью сделаем вам специальное предложение. Ваш отдых – наш приоритет.</p>
                     <div class="flex flex-col gap-6 text-lg leading-[173.3%]">
                         <NuxtLink to="/" class="flex items-center gap-[18px]">

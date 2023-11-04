@@ -15,7 +15,7 @@
             </button>
         </div>
         <div class="flex flex-col gap-1.5 text-[#0D0D0D] dark:text-white px-5">
-            <p class="uppercase text-2xl leading-[135.3%] w-fit">{{ props.title }}</p>
+            <p class="uppercase text-2xl leading-[135.3%] w-fit NeutralFace">{{ props.title }}</p>
             <div class="flex items-center gap-x-2.5 gap-y-1.5 flex-wrap">
                 <div class="flex items-center gap-1 py-1 px-4 font-light leading-[135.3%] rounded-full border-[0.5px] border-[#0B0B0B] dark:border-white">
                     <svg class="fill-[#0D0D0D] dark:fill-white" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">

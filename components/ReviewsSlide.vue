@@ -4,7 +4,7 @@
             <p class="rounded-full leading-[135.3%] py-1 px-[30px] bg-white/30 border-2 border-white" v-for="advantage in props.advantages">{{ advantage }}</p>
         </div>
         <div class="flex flex-col gap-5">
-            <p class="text-[32px] leading-[151.8%] uppercase">{{ props.title }}</p>
+            <p class="text-[32px] leading-[151.8%] uppercase NeutralFace">{{ props.title }}</p>
             <div class="flex max-md:flex-col lg:items-center gap-4 justify-between">
                 <p class="text-lg leading-[173.3%] max-w-[57%]">{{ props.text }}</p>
                 <p class="text-center text-xl leading-[135.3%] px-6 py-4 bg-gradient-to-l from-[#B98CF2] to-[#48BBDE] rounded-[15px]">{{ props.user.name }} <br> {{ props.user.location }}</p>

@@ -4,7 +4,7 @@
 
 @layer base {
     #__nuxt{
-        @apply flex flex-col min-h-screen bg-white dark:bg-[#121212]
+        @apply flex flex-col min-h-screen bg-white dark:bg-[#121212] font-Raleway
     }
         
     :root{
@@ -37,4 +37,14 @@
 
 .why_gradient {
     background: linear-gradient(103deg, #B190F1 1.26%, #8B9FEA 36.75%, #75A9E6 57.83%, #5DB2E2 79.94%, #48BBDE 100%);
+}
+
+@font-face {
+    font-family: 'NeutralFace';
+    src: url('../fonts/NeutralFace.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+.NeutralFace {
+    font-family: "NeutralFace";
 }
