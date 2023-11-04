@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>    
-        <div class="flex flex-col gap-12 md:gap-16 xl:gap-20 mt-5 md:mt-9 xl:mt-12">
+        <div class="flex flex-col gap-12 md:gap-16 xl:gap-20 mt-5 md:mt-9 xl:mt-12 z-[1]">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
                 <div class="bg-gradient-to-br from-[#48BBDE] to-[#B190F1] rounded-[25px] p-[3px] flex items-center justify-center">
                     <div class="flex flex-col items-center h-full text-center px-10 xl:px-11 py-6 md:py-12 xl:py-[74px] w-full rounded-[25px] bg-white text-[#131313] dark:bg-[#121212] dark:text-white">
@@ -37,7 +37,7 @@
                             <p class="text-2xl md:text-3xl xl:text-4xl leading-[135.3%] font-light">субъектах России</p>
                         </div>
                     </div>
-                    <p class="py-6 text-2xl xl:text-[29px] leading-[135.3%] font-light text-center px-14 rounded-[23px] bg-gradient-to-r from-[#d2b4f7] to-[#88d3ea] backdrop-blur-[50px] dark:from-[#595959]/50 dark:to-[#595959]/50">Стоимость без наценки</p>
+                    <p class="grow flex items-center justify-center py-6 text-2xl xl:text-[29px] leading-[135.3%] font-light text-center px-14 rounded-[23px] bg-gradient-to-r from-[#d2b4f7] to-[#88d3ea] backdrop-blur-[50px] dark:from-[#595959]/50 dark:to-[#595959]/50">Стоимость без наценки</p>
                 </div>
                 <div class="flex flex-col gap-5">
                     <p class="grow py-6 xl:py-10 flex items-center justify-center text-center text-2xl xl:text-[29px] leading-[135.3%] font-light px-8 rounded-[23px] bg-gradient-to-r from-[#d2b4f7] to-[#88d3ea] backdrop-blur-[50px] dark:from-[#595959]/50 dark:to-[#595959]/50 text-white">Удобная система бронирования жилья</p>
@@ -152,10 +152,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-col gap-4 w-full lg:w-[35%]">
-                    <input type="text" class="w-full px-7 text-lg leading-[173.3%] py-[12.5px] placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none" placeholder="Имя">
-                    <input type="text" class="w-full px-7 text-lg leading-[173.3%] py-[12.5px] placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none" placeholder="Номер телефона">
-                    <textarea class="w-full px-7 text-lg leading-[173.3%] py-[12.5px] h-28 placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none resize-none" placeholder="Сообщение"></textarea>
+                <form class="flex flex-col gap-4 w-full lg:w-[35%]">
+                    <input v-model="form.name" name="name" type="text" class="w-full px-7 text-lg leading-[173.3%] py-[12.5px] placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none" placeholder="Имя">
+                    <input v-model="form.phone" name="phone" type="text" class="w-full px-7 text-lg leading-[173.3%] py-[12.5px] placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none" placeholder="Номер телефона">
+                    <textarea v-model="form.msg" name="msg" class="w-full px-7 text-lg leading-[173.3%] py-[12.5px] h-28 placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none resize-none" placeholder="Сообщение"></textarea>
                     <div class="flex flex-col gap-2.5 w-full leading-[173.3%]">
                         <div class="flex items-center gap-x-4 gap-y-2.5 flex-wrap text-sm">
                             <label class="flex items-center gap-2.5">
@@ -181,8 +181,8 @@
                             и обработки персональных данных.
                         </label>
                     </div>
-                    <button class="w-full py-[15px] text-center text-2xl leading-[135.3%] rounded-[15px] bg-white text-[#3E3E3E] dark:text-white dark:bg-gradient-to-l from-[#B98CF2] to-[#40BDDB]">Отправить</button>
-                </div>
+                    <button @click.prevent="submitForm" class="w-full py-[15px] text-center text-2xl leading-[135.3%] rounded-[15px] bg-white text-[#3E3E3E] dark:text-white dark:bg-gradient-to-l from-[#B98CF2] to-[#40BDDB]">Отправить</button>
+                </form>
             </div>
         </div>
     </div>
@@ -191,6 +191,32 @@
 <script setup>
     const { data: variants, error: variantsError } = await useFetch(`https://fire8327.github.io/JSONs/variants.json`)
     const { data: reviews, error: reviewsError } = await useFetch(`https://fire8327.github.io/JSONs/reviews.json`)
+
+
+    const form = ref({
+        name: "",
+        phone: "",
+        msg: ""
+    })
+
+    const token = "6478570357:AAHRiEm9vOmK0oVMzoVAbxMGxIZl1NK86oc"
+    const chat_id = "-4029823062"
+    const URL = `https://api.telegram.org/bot${token}/sendMessage`
+
+    const submitForm = async () => {
+        let msg = "<b>Сообщение с сайта!</b>\n"
+        + `<b>Имя:</b> ${form.value.name}\n`
+        + `<b>Номер телефона:</b> ${form.value.phone}\n`
+        + `<b>Сообщение:</b> ${form.value.msg}\n` 
+        const {data, error} = await useFetch(URL,{
+		body:{
+			'chat_id': chat_id,
+			'parse_mode': 'html',
+			'text': msg
+		},
+		method:'post'
+	})
+    }
 </script>
 
 <style>
