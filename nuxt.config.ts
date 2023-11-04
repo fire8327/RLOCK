@@ -1,13 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: true },
-  googleFonts: {
-    families: {
-        'Raleway': {
-          wght: [300, 400, 500]
-        }
-    }
-},
+  devtools: { enabled: true },  
   modules: [
     "@nuxtjs/tailwindcss",
     "@vueuse/nuxt",
@@ -15,6 +8,13 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxtjs/google-fonts"
   ],
+  googleFonts: {
+    families: {
+        'Raleway': {
+          wght: [300, 400, 500]
+        }
+    }
+  },
   pinia: {
     autoImports: [
       'defineStore'
