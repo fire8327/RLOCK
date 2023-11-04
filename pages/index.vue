@@ -109,7 +109,7 @@
         </div>
     </div>
     <div class="flex max-md:flex-col lg:items-center gap-5">
-        <div class="flex grow gap-4 max-xl:flex-col xl:items-end rounded-[30px] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[2px] text-white h-full">
+        <div class="flex grow gap-4 xl:justify-between max-xl:flex-col xl:items-end rounded-[30px] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[2px] text-white h-full">
             <div class="flex flex-col gap-9 px-6 max-md:pt-10 xl:pr-0 xl:pl-[90px] max-xl:pb-0 md:py-12 h-full">
                 <div class="flex flex-col gap-4">
                     <p class="text-[32px] md:text-4xl xl:text-[40px] leading-[135.3%] uppercase NeutralFace">Мобильное приложение</p>
