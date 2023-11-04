@@ -108,6 +108,43 @@
             <div class="scrollVariants w-1/3 lg:hidden mx-auto bg-[#D9D9D9] h-[3px] rounded-full"></div>
         </div>
     </div>
+    <div class="flex max-md:flex-col lg:items-center gap-5">
+        <div class="flex grow gap-4 max-xl:flex-col xl:items-end rounded-[30px] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[2px] text-white h-full">
+            <div class="flex flex-col gap-9 px-6 max-md:pt-10 xl:pr-0 xl:pl-[90px] max-xl:pb-0 md:py-12 h-full">
+                <div class="flex flex-col gap-4">
+                    <p class="text-[32px] md:text-4xl xl:text-[40px] leading-[135.3%] uppercase">Мобильное приложение</p>
+                    <div class="flex flex-col gap-2.5 text-lg font-medium leading-[173.3%]">
+                        <div class="flex items-start gap-2.5">
+                            <div class="bg-white w-2.5 h-2.5 rounded-[3px] shrink-0 mt-2.5"></div>
+                            <p>Удобство и мобильность</p>
+                        </div>
+                        <div class="flex items-start gap-2.5">
+                            <div class="bg-white w-2.5 h-2.5 rounded-[3px] shrink-0 mt-2.5"></div>
+                            <p>Быстрый поиск жилья прямо в телефоне</p>
+                        </div>
+                        <div class="flex items-start gap-2.5">
+                            <div class="bg-white w-2.5 h-2.5 rounded-[3px] shrink-0 mt-2.5"></div>
+                            <p>Моментальные push-уведомления о любых изменениях</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-5 xl:gap-7">
+                    <NuxtLink to="/">
+                        <img src="/images/app/google.png" alt="">
+                    </NuxtLink>
+                    <NuxtLink to="/">
+                        <img src="/images/app/apple.png" alt="">
+                    </NuxtLink>
+                </div>
+            </div>
+            <img src="/images/app/phone.png" alt="" class="-mb-0.5 -mr-0.5 w-fit max-md:self-end md:hidden xl:block">
+        </div>
+        <div class="bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] rounded-[23px] p-[3px] h-full">
+            <div class="bg-white w-full h-full rounded-[23px] flex items-center justify-center overflow-hidden">
+                <img src="/images/app/qr.png" alt="">
+            </div>
+        </div>
+    </div>
     <div class="flex flex-col gap-9">
         <div class="flex items-end justify-between wrapper w-full">
             <p class="uppercase text-[40px] md:text-[50px] xl:text-[64px] max-w-[549px] text-[#3E3E3E] dark:text-white">Последние отзывыы</p>
