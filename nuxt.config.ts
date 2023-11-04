@@ -6,13 +6,19 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "nuxt-swiper",
     "@pinia/nuxt",
-    "@nuxtjs/google-fonts"
+    "@nuxtjs/google-fonts",
+    "@formkit/nuxt"
   ],
   googleFonts: {
     families: {
         'Raleway': {
           wght: [300, 400, 500]
         }
+    }
+  },
+  postcss: {
+    plugins: {
+      cssnano: false 
     }
   },
   pinia: {

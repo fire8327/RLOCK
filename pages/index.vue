@@ -88,17 +88,17 @@
              :navigation="{prevEl:'.variantsPrev', nextEl:'.variantsNext'}" :scrollbar="{el:'.scrollVariants'}"
              :breakpoints="
              {
-                '375':{
-                    'slidesPerView': '1'
+                375: {
+                    'slidesPerView': 1
                 },
-                '768': {
-                    'slidesPerView': '2'
+                768: {
+                    'slidesPerView': 2
                 },
-                '1024': {
-                    'slidesPerView': '3'
+                1024: {
+                    'slidesPerView': 3
                 },
-                '1280': {
-                    'slidesPerView': '3.5'
+                1280: {
+                    'slidesPerView': 3.5
                 }
              }" class="w-full">
                 <SwiperSlide v-for="variant in variants">
@@ -154,11 +154,11 @@
             <Swiper :space-between="20" :loop="true" :modules="[SwiperNavigation, SwiperScrollbar]" :navigation="{prevEl:'.reviewsPrev', nextEl:'.reviewsNext'}"  :scrollbar="{el:'.scrollReviews'}"
                 :breakpoints="
                 {
-                 '375':{
-                     'slidesPerView': '1'
+                    375: {
+                        'slidesPerView': 1
                     },
-                    '1024': {
-                        'slidesPerView': '2'
+                    1024: {
+                        'slidesPerView': 2
                     }
                 }" class="w-full">
                 <SwiperSlide v-for="review in reviews">
@@ -189,37 +189,20 @@
                         </div>
                     </div>
                 </div>
-                <form class="flex flex-col gap-4 w-full lg:w-[35%]">
-                    <input v-model="form.name" name="name" type="text" class="w-full px-7 text-lg leading-[173.3%] py-[12.5px] placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none" placeholder="Имя">
-                    <input v-model="form.phone" name="phone" type="text" class="w-full px-7 text-lg leading-[173.3%] py-[12.5px] placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none" placeholder="Номер телефона">
-                    <textarea v-model="form.msg" name="msg" class="w-full px-7 text-lg leading-[173.3%] py-[12.5px] h-28 placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none resize-none" placeholder="Сообщение"></textarea>
+                <FormKit id="feedback" type="form" form-class="flex flex-col gap-4 w-full lg:w-[35%]" @submit="submitForm" :actions="false">
+                    <FormKit v-model="form.name" validation="required|length:2" name="Имя" type="text" message-class="text-[#E71616]" input-class="$remove:border-none w-full px-7 text-lg leading-[173.3%] py-[12.5px] placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none" placeholder="Имя"/>
+                    <FormKit v-model="form.phone" validation="required|length:11" name="Номер телефона" type="text" message-class="text-[#E71616]" input-class="$remove:border-none w-full px-7 text-lg leading-[173.3%] py-[12.5px] placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none" placeholder="Номер телефона"/>
+                    <FormKit v-model="form.msg" name="msg" type="textarea" input-class="$remove:border-none w-full px-7 text-lg leading-[173.3%] py-[12.5px] h-28 placeholder-white rounded-[15px] border border-white bg-transparent focus:outline-none resize-none" placeholder="Сообщение"></FormKit>
                     <div class="flex flex-col gap-2.5 w-full leading-[173.3%]">
-                        <div class="flex items-center gap-x-4 gap-y-2.5 flex-wrap text-sm">
-                            <label class="flex items-center gap-2.5">
-                                <input type="radio" name="question" class="w-4 h-4">
-                                Общий вопрос
-                            </label>    
-                            <label class="flex items-center gap-2.5">
-                                <input type="radio" name="question" class="w-4 h-4">
-                                Техническая поддержка
-                            </label>    
-                            <label class="flex items-center gap-2.5">
-                                <input type="radio" name="question" class="w-4 h-4">
-                                Бронирование конкретного объекта
-                            </label>    
-                            <label class="flex items-center gap-2.5">
-                                <input type="radio" name="question" class="w-4 h-4">
-                                Другое
-                            </label>    
-                        </div>
+                        <FormKit type="radio" decorator-Icon="radioDecorator" wrapper-class="flex items-center gap-2.5" decorator-class="$remove:bg-white w-4 h-4 border border-white" options-class="flex items-center gap-x-4 gap-y-2.5 flex-wrap" fieldset-class="$remove:border" v-model="form.radio" :options="['Общий вопрос','Техническая поддержка','Бронирование конкретного объекта','Другое']"/>
                         <label class="flex items-start gap-2.5 text-xs">
                             <input type="checkbox" name="agree" class="w-3 h-3 mt-1">
                             Я соглашаюсь с условиями политики конфиденциальности 
                             и обработки персональных данных.
                         </label>
                     </div>
-                    <button @click.prevent="submitForm" class="w-full py-[15px] text-center text-2xl leading-[135.3%] rounded-[15px] bg-white text-[#3E3E3E] dark:text-white dark:bg-gradient-to-l from-[#B98CF2] to-[#40BDDB]">Отправить</button>
-                </form>
+                    <FormKit type="submit" input-class="$remove:bg-blue-600 $remove:focus-visible:outline-2 $remove:inline-flex $remove:text-white $remove:text-sm w-full py-[15px] text-center text-2xl leading-[135.3%] rounded-[15px] bg-white text-[#3E3E3E] dark:text-white dark:bg-gradient-to-l from-[#B98CF2] to-[#40BDDB]">Отправить</FormKit>
+                </FormKit>
             </div>
         </div>
     </div>
@@ -233,7 +216,8 @@
     const form = ref({
         name: "",
         phone: "",
-        msg: ""
+        msg: "",
+        radio: ""
     })
 
     const token = "6478570357:AAHRiEm9vOmK0oVMzoVAbxMGxIZl1NK86oc"
@@ -245,6 +229,7 @@
         + `<b>Имя:</b> ${form.value.name}\n`
         + `<b>Номер телефона:</b> ${form.value.phone}\n`
         + `<b>Сообщение:</b> ${form.value.msg}\n` 
+        + `<b>Вопрос:</b> ${form.value.radio}\n` 
         const {data, error} = await useFetch(URL,{
 		body:{
 			'chat_id': chat_id,
@@ -253,7 +238,10 @@
 		},
 		method:'post'
 	})
+    if(data.value) {
+        reset('feedback')
     }
+}
 </script>
 
 <style>
