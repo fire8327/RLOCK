@@ -9,37 +9,51 @@
 </template>
 
 <script setup>
-    /* const authStore = useAuthStore()
-    const authenticateUser = authStore.authenticateUser */
-
     const user = ref({
-        username: "admin",
-        password: "12345"
+        username: "",
+        password: ""
     })
-    /* const router = useRouter()    
+
+    const userStore = useUserStore()
+    const router = useRouter()
     
     const login = async () => {
-        await authenticateUser(user.value)
-        if (authStore.authenticated) {
-            router.push('/')
-        }
-    } */
-
-    const login = async () => {
-        const { data, error, pending } = await useFetch("https://seahorse-app-2brlp.ondigitalocean.app/api/admin/login", {
-            method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: {
-                login: user.value.username,
-                password: user.value.password
+        if(user.value && user.value.username == "admin") {
+            const { data, error, pending } = await useFetch("https://seahorse-app-2brlp.ondigitalocean.app/api/admin/login", {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: {
+                    login: user.value.username,
+                    password: user.value.password
+                }
+            })    
+            if(data.value) {
+                console.log(data.value)
+                userStore.authenticated = true
+                userStore.role = "admin"
+                router.push('/')
             }
-        })
-
-        if(data.value) {
-            console.log(data.value)
-        }
-        if(error.value) {
-            console.log(error.value)
+            if(error.value) {
+                console.log(error.value)
+            }
+        } else {
+            const { data, error, pending } = await useFetch("https://seahorse-app-2brlp.ondigitalocean.app/api/auth/login", {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: {
+                    login: user.value.username,
+                    password: user.value.password
+                }
+            })    
+            if(data.value) {
+                console.log(data.value)
+                userStore.authenticated = true
+                userStore.role = "user"
+                router.push('/')
+            }
+            if(error.value) {
+                console.log(error.value)
+            }
         }
     }
 </script>
