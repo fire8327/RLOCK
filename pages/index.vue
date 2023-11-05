@@ -201,6 +201,10 @@
                     </div>
                     <FormKit type="submit" wrapper-class="$remove:mb-1" outer-class="$remove:mb-4" input-class="$remove:focus-visible:outline-blue-600 $remove:focus-visible:outline-offset-2 $remove:bg-blue-600 $remove:focus-visible:outline-2 $remove:inline-flex $remove:text-white $remove:text-sm w-full py-[15px] text-center text-2xl leading-[135.3%] rounded-[15px] bg-white text-[#3E3E3E] dark:text-white dark:bg-gradient-to-l from-[#B98CF2] to-[#40BDDB]">Отправить</FormKit>
                 </FormKit>
+                <button type="button" @click="message.title = null" class="fixed top-10 right-10 z-10 flex items-center gap-4 px-6 py-2 rounded-2xl w-fit text-[#131313] bg-white dark:text-white dark:bg-[#131313]" :class="message.type ? 'shadow-[0_0_20px_-7px]' : 'bg-red-500'" v-if="message.title">
+                    <span>{{message.title}}</span>
+                    <Icon name="material-symbols:close-rounded" class="text-xl"/>
+                </button>
             </div>
         </div>
     </div>
@@ -239,7 +243,12 @@
             },
             method:'post'        
 	    })
+        if (error.value) return message.value.title = 'При отправке произошла ошибка!', message.value.type = false
+	    message.value.title = 'Успешная отправка!', message.value.type = true 
         reset('feedbackForm')
+        setTimeout(() => {
+            message.value.title = null
+        }, 3000);
     }
 </script>
 
