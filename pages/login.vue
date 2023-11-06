@@ -9,6 +9,8 @@
 </template>
 
 <script setup>
+    const config = useRuntimeConfig()
+
     const user = ref({
         username: "",
         password: ""
@@ -19,7 +21,7 @@
     
     const login = async () => {
         if(user.value && user.value.username == "admin") {
-            const { data, error, pending } = await useFetch("https://seahorse-app-2brlp.ondigitalocean.app/api/admin/login", {
+            const { data, error, pending } = await useFetch(`${config.public.APIbaseURL}/api/admin/login`, {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: {
