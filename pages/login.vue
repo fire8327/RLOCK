@@ -33,13 +33,13 @@
                 console.log(data.value)
                 userStore.authenticated = true
                 userStore.role = "admin"
-                router.push('/')
+                router.push('/admin')
             }
             if(error.value) {
                 console.log(error.value)
             }
         } else {
-            const { data, error, pending } = await useFetch("https://seahorse-app-2brlp.ondigitalocean.app/api/auth/login", {
+            const { data, error, pending } = await useFetch(`${config.public.APIbaseURL}/api/auth/login`, {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: {

@@ -7,7 +7,18 @@
                         <img src="/images/icons/logoHeader.svg" alt="" class="w-fit">
                     </button>
                 </UseDark>
-                <div class="flex items-center gap-[50px] px-[86px] py-3.5 text-xl rounded-full border border-[#131313] dark:border-white">
+                <div v-if="role == 'admin'" class="flex items-center gap-[50px] px-[86px] py-3.5 text-xl rounded-full border border-[#131313] dark:border-white">
+                    <NuxtLink to="/admin" class="relative after:absolute after:w-full after:h-px after:left-0 after:-bottom-1.5 after:bg-gradient-to-l after:from-[#B98CF2] after:to-[#48BBDE] after:transition-opacity after:opacity-0 after:duration-500 hover:after:opacity-100">
+                        Недвижимость
+                    </NuxtLink> 
+                    <NuxtLink to="/admin/users" class="relative after:absolute after:w-full after:h-px after:left-0 after:-bottom-1.5 after:bg-gradient-to-l after:from-[#B98CF2] after:to-[#48BBDE] after:transition-opacity after:opacity-0 after:duration-500 hover:after:opacity-100">
+                        Пользователи
+                    </NuxtLink> 
+                    <button @click="logout" class="relative after:absolute after:w-full after:h-px after:left-0 after:-bottom-1.5 after:bg-gradient-to-l after:from-[#B98CF2] after:to-[#48BBDE] after:transition-opacity after:opacity-0 after:duration-500 hover:after:opacity-100">
+                        Выход
+                    </button>
+                </div>
+                <div v-else class="flex items-center gap-[50px] px-[86px] py-3.5 text-xl rounded-full border border-[#131313] dark:border-white">
                     <NuxtLink to="/" class="relative after:absolute after:w-full after:h-px after:left-0 after:-bottom-1.5 after:bg-gradient-to-l after:from-[#B98CF2] after:to-[#48BBDE] after:transition-opacity after:opacity-0 after:duration-500 hover:after:opacity-100">
                         Мои бронирования
                     </NuxtLink> 
@@ -30,7 +41,7 @@
                                 </defs>
                             </svg>
                         </NuxtLink>
-                        <NuxtLink to="/" class="group">
+                        <NuxtLink :to="authenticated ? '/' : '/login'" class="group">
                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path class="stroke-[#131313] dark:stroke-white fill-none transition-all duration-500 group-hover:fill-[url(#paint0_linear_30_876)]" d="M5 22.5C5 21.1739 5.52678 19.9021 6.46447 18.9645C7.40215 18.0268 8.67392 17.5 10 17.5H20C21.3261 17.5 22.5979 18.0268 23.5355 18.9645C24.4732 19.9021 25 21.1739 25 22.5C25 23.163 24.7366 23.7989 24.2678 24.2678C23.7989 24.7366 23.163 25 22.5 25H7.5C6.83696 25 6.20107 24.7366 5.73223 24.2678C5.26339 23.7989 5 23.163 5 22.5Z" stroke-linejoin="round"/>
                                     <path class="stroke-[#131313] dark:stroke-white fill-none transition-all duration-500 group-hover:fill-[url(#paint1_linear_30_876)]" d="M18.75 8.75C18.75 10.8211 17.0711 12.5 15 12.5C12.9289 12.5 11.25 10.8211 11.25 8.75C11.25 6.67893 12.9289 5 15 5C17.0711 5 18.75 6.67893 18.75 8.75Z"/>
@@ -126,6 +137,15 @@
     })
     
     const isMenuShow = ref(false)
+
+    const { authenticated, role } = storeToRefs(useUserStore())
+
+    const router = useRouter()
+    const logout = () => {
+        authenticated.value = false
+        role.value = ""
+        router.push("/")
+    }
 
     /* const authStore = useAuthStore()
     const logUserOut = authStore.logUserOut
