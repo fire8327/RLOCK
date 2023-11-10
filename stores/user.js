@@ -1,8 +1,8 @@
 export const useUserStore  = defineStore("user", () => {
     const authenticated = useCookie('authenticated')
     const role = useCookie('role')
+    const token = useCookie('token')
     authenticated.value = false
-    role.value = ""
 
     /* function logUserOut() {
         const token = useCookie('token')
@@ -10,5 +10,5 @@ export const useUserStore  = defineStore("user", () => {
         this.authenticated = false
     } */
 
-    return {authenticated, role}
+    return {authenticated, role, token}
 })

@@ -143,7 +143,7 @@
     const router = useRouter()
     const logout = () => {
         authenticated.value = false
-        role.value = ""
+        role.value = null
         router.push("/")
     }
 
