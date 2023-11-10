@@ -12,10 +12,6 @@
                 <button class="w-full text-center py-2 bg-[#D9D9D9] border border-black rounded-full">Редактировать фотографии</button>
             </div>
             <div class="w-full xl:w-[70%] flex flex-col gap-3 text-black leading-[135.3%]">
-                <div class="flex flex-col">
-                    <p class="text-[#606060] text-[10px] ml-1.5 font-light -mb-1.5">Название</p>
-                    <input type="text" class="py-2 px-8 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full lg:w-fit text-4xl" value="Отель Room Room" placeholder="Название">
-                </div>
                 <div class="flex max-lg:flex-col lg:items-center gap-5">
                     <div class="flex flex-col lg:w-[25%]">
                         <p class="text-[#606060] text-[10px] ml-1.5 font-light -mb-1.5">Страна</p>
