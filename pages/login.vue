@@ -47,7 +47,7 @@
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: {
-                    login: user.value.username,
+                    email: user.value.username,
                     password: user.value.password
                 }
             })    
