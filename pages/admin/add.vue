@@ -10,7 +10,6 @@
             <div class="flex flex-col gap-5 w-full xl:w-[30%]">
                 <div class="rounded-xl bg-[#808080] h-[387px]"></div>
                 <button class="w-full text-center py-2 bg-[#D9D9D9] border border-black rounded-full">Редактировать фотографии</button>
-                {{ apartment }}
             </div>
             <div class="w-full xl:w-[70%] flex flex-col gap-5 text-black leading-[135.3%]">
                 <div class="flex max-lg:flex-col lg:items-center gap-5">
