@@ -29,7 +29,7 @@
     const config = useRuntimeConfig()
     const router = useRouter()
     const { data: apartments, error: errorApartments } = await useFetch(`${config.public.APIbaseURL}/api/admin/getApartments`)
-
+    
     const deleteApartments = async (id) => {        
         const { data, error, pending } = await useFetch(`${config.public.APIbaseURL}/api/admin/deleteApartments/${id}`, {
             method: "DELETE",
