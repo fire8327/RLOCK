@@ -27,6 +27,7 @@
 
 <script setup>
     const config = useRuntimeConfig()
+    const router = useRouter()
     const { data: apartments, error: errorApartments } = await useFetch(`${config.public.APIbaseURL}/api/admin/getApartments`)
 
     const deleteApartments = async (id) => {        
@@ -36,6 +37,7 @@
         })
         if(data.value) {
             console.log(data.value)
+            location.reload()
         }
         if(error.value) {
             console.log(error.value)
