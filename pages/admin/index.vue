@@ -19,7 +19,7 @@
             <div class="col-span-full grid grid-cols-5 gap-x-10" v-for="apartment in apartments">
                 <p class="w-fit col-span-3">{{ apartment.city }}, {{ apartment.address }}</p>
                 <button class="w-fit col-span-1 underline underline-offset-2">изменить</button>
-                <button @click="deleteApartments(apartment.id)" class="w-fit col-span-1 underline underline-offset-2">удалить</button>
+                <button @click="deleteApartments(apartment._id)" class="w-fit col-span-1 underline underline-offset-2">удалить</button>
             </div>
         </div>
     </div>
@@ -30,19 +30,12 @@
     const { data: apartments, error: errorApartments } = await useFetch(`${config.public.APIbaseURL}/api/admin/getApartments`)
 
     const deleteApartments = async (id) => {        
-        const { data, error, pending } = await useFetch(`${config.public.APIbaseURL}/api/admin/deleteApartments`, {
-            method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: {
-                apartmentId: id
-            }
+        const { data, error, pending } = await useFetch(`${config.public.APIbaseURL}/api/admin/deleteApartments/${id}`, {
+            method: "DELETE",
+            headers: { 'Content-Type': 'application/json' }
         })
         if(data.value) {
             console.log(data.value)
-            /* userStore.authenticated = true
-            userStore.role = "user"
-            userStore.token = data.value.token
-            router.push('/') */
         }
         if(error.value) {
             console.log(error.value)
