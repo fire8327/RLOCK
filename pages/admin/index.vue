@@ -13,8 +13,8 @@
         <div class="flex flex-col gap-5 rounded-[25px] bg-[#D9D9D9] px-12 py-7 text-xl font-light text-left">
             <div class="col-span-full px-7 pb-4 border-b border-black grid grid-cols-5 gap-x-10">
                 <p class="w-fit col-span-3">Адрес</p>
-                <p class="w-fit col-span-1">Операции</p>
-                <button class="w-fit col-span-1 underline underline-offset-2">Удалить выбранные</button>
+                <p class="w-fit col-span-1">редактирование</p>
+                <button class="w-fit col-span-1 underline underline-offset-2">удаление</button>
             </div>
             <div class="col-span-full grid grid-cols-5 gap-x-10" v-for="apartment in apartments">
                 <p class="w-fit col-span-3">{{ apartment.city }}, {{ apartment.address }}</p>
