@@ -88,15 +88,22 @@
         })    
         if(createApartments.value) {
             console.log(createApartments.value)
-            /* const { data:uploadImage, error:errorImage } = await useFetch(`${config.public.APIbaseURL}/api/admin/uploadImageApartment`, {
+            const { data:uploadImage, error:errorImage } = await useFetch(`${config.public.APIbaseURL}/api/admin/uploadImageApartment`, {
                 method: "POST",
-                headers: { 'Content-Type': 'application/json' },
+                data: imgSrc.value,
+                headers: { 'Content-Type': 'application/json', },
                 body: {
                     apartmentId: createApartments._id,
                     label: imgName.value
                 }
-            })  */   
-            router.push('/admin')
+            })    
+            if(uploadImage.value) {
+                console.log(uploadImage.value)
+                router.push('/admin')
+            }
+            if(errorImage.value) {
+                console.log(errorImage.value)
+            }
         }
         if(errorApartments.value) {
             console.log(errorApartments.value)

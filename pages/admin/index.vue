@@ -11,6 +11,7 @@
             </NuxtLink>
         </div>
         <div class="flex flex-col gap-5 rounded-[25px] bg-[#D9D9D9] px-12 py-7 text-xl font-light text-left">
+            <pre>{{ apartments }}</pre>
             <div class="col-span-full px-7 pb-4 border-b border-black grid grid-cols-5 gap-x-10">
                 <p class="w-fit col-span-3">Адрес</p>
                 <p class="w-fit col-span-1">Редактирование</p>
