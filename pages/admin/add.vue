@@ -8,8 +8,9 @@
         </div>
         <div class="flex gap-5 max-xl:flex-col">
             <div class="flex flex-col gap-5 w-full xl:w-[30%]">
-                <div class="rounded-xl bg-[#808080] h-[387px]"></div>
-                <button class="w-full text-center py-2 bg-[#D9D9D9] border border-black rounded-full">Редактировать фотографии</button>
+                <img v-if="imgSrc" :src="imgSrc" alt="">
+                <div v-else class="rounded-xl bg-[#808080] h-[387px]"></div>
+                <label class="w-full text-center py-2 bg-[#D9D9D9] border border-black rounded-full cursor-pointer">Редактировать фотографии<input type="file" name="image" accept="image/*" hidden @change="inputChange"></label>
             </div>
             <div class="w-full xl:w-[70%] flex flex-col gap-5 text-black leading-[135.3%]">
                 <div class="flex max-lg:flex-col lg:items-center gap-5">
@@ -24,17 +25,32 @@
                 </div>
                 <div class="flex max-lg:flex-col lg:items-center gap-5">
                     <input type="text" v-model="apartment.station" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[50%]" placeholder="Линия метро">
-                    <input type="text" v-model="apartment.address" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[25%]" placeholder="Геопозиция">
-                    <input type="text" v-model="apartment.location" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[25%]" placeholder="Геопозиция">
+                    <input type="text" v-model="apartment.location.lat" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[25%]" placeholder="Геопозиция">
+                    <input type="text" v-model="apartment.location.long" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[25%]" placeholder="Геопозиция">
                 </div>
-                <input type="text" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[74%]" placeholder="Адрес">
+                <input type="text" v-model="apartment.address" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[74%]" placeholder="Адрес">
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
+    const imgSrc = ref()
+    async function inputChange(e) {
+        const inputFile = e.target.files[0]
+        if(!inputFile) return
+        const readData = (f) =>
+        new Promise((resolve) => {
+            const reader = new FileReader()
+            reader.onloadend = () => resolve(reader.result)
+            reader.readAsDataURL(f)
+        })
+        imgSrc.value = await readData(inputFile)
+        console.log(imgSrc.value)
+    }
+
     const config = useRuntimeConfig()
+    const router = useRouter()
 
     const apartment = ref({
         country: "",
@@ -45,13 +61,14 @@
         branch: "",
         station: "",
         address: "",
-        location: ""
+        location: {
+            lat: "",
+            long: ""
+        }
     })
 
-    const router = useRouter()
-
     const addApartment = async () => {        
-        const { data, error, pending } = await useFetch(`${config.public.APIbaseURL}/api/admin/createApartment`, {
+        const { data:createApartments, error:errorApartments } = await useFetch(`${config.public.APIbaseURL}/api/admin/createApartment`, {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: {
@@ -66,12 +83,12 @@
                 location: apartment.value.location
             }
         })    
-        if(data.value) {
-            console.log(data.value)
+        if(createApartments.value) {
+            console.log(createApartments.value)
             router.push('/admin')
         }
-        if(error.value) {
-            console.log(error.value)
+        if(errorApartments.value) {
+            console.log(errorApartments.value)
         }
     }
 </script>
