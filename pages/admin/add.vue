@@ -36,8 +36,10 @@
 
 <script setup>
     const imgSrc = ref()
+    const imgName = ref()
     async function inputChange(e) {
         const inputFile = e.target.files[0]
+        imgName.value = inputFile.name
         if(!inputFile) return
         const readData = (f) =>
         new Promise((resolve) => {
@@ -47,6 +49,7 @@
         })
         imgSrc.value = await readData(inputFile)
         console.log(imgSrc.value)
+        console.log(imgName.value)
     }
 
     const config = useRuntimeConfig()
@@ -85,6 +88,14 @@
         })    
         if(createApartments.value) {
             console.log(createApartments.value)
+            /* const { data:uploadImage, error:errorImage } = await useFetch(`${config.public.APIbaseURL}/api/admin/uploadImageApartment`, {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: {
+                    apartmentId: createApartments._id,
+                    label: imgName.value
+                }
+            })  */   
             router.push('/admin')
         }
         if(errorApartments.value) {
