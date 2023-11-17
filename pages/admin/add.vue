@@ -5,9 +5,6 @@
             <button @click="addApartment" class="w-fit py-2 px-5 gap-2.5 text-base md:text-lg xl:text-xl leading-[135.3%] border border-black rounded-full bg-[#D9D9D9]">
                 Сохранить
             </button>
-            <button @click="addImage" class="w-fit py-2 px-5 gap-2.5 text-base md:text-lg xl:text-xl leading-[135.3%] border border-black rounded-full bg-[#D9D9D9]">
-                Фото
-            </button>
         </div>
         <div class="flex gap-5 max-xl:flex-col">
             <div class="flex flex-col gap-5 w-full xl:w-[30%]">
@@ -92,29 +89,27 @@
             }
         })    
         if(createApartments.value) {
-            console.log(createApartments.value)            
+            console.log(createApartments.value)    
+            console.log(imgFile.value)
+            console.log(imgName.value)
+            const formData = new FormData()
+            formData.append('image', imgFile.value)   
+            formData.append('apartmentId', createApartments.value._id)   
+            formData.append('label', imgName.value)     
+            const { data, error } = await useFetch('https://oyster-app-ekdlk.ondigitalocean.app/api/admin/uploadImageApartment', {
+                method: 'POST',
+                body: formData
+            })    
+            if(data.value) {
+                console.log(data.value)
+                router.push('/admin')
+            }
+            if(error.value) {
+                console.log(error.value)
+            }        
         }
         if(errorApartments.value) {
             console.log(errorApartments.value)
-        }
-    }
-
-    const addImage = async () => {      
-        console.log(imgFile.value)
-        const formData = new FormData()
-        formData.append('image', imgFile.value)   
-        formData.append('apartmentId', '6554ca48f7dac1a700da308b')   
-        formData.append('label', 'test2')     
-        const { data, error } = await useFetch('https://oyster-app-ekdlk.ondigitalocean.app/api/admin/uploadImageApartment', {
-            method: 'POST',
-            body: formData
-        })    
-        if(data.value) {
-            console.log(data.value)
-            router.push('/')
-        }
-        if(error.value) {
-            console.log(error.value)
         }
     }
 </script>
