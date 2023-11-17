@@ -107,7 +107,6 @@
         formData.append('label', 'test2')     
         const { data, error } = await useFetch('https://oyster-app-ekdlk.ondigitalocean.app/api/admin/uploadImageApartment', {
             method: 'POST',
-            headers: { 'Content-Type': 'multipart/form-data' },
             body: formData
         })    
         if(data.value) {
