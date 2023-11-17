@@ -5,12 +5,15 @@
             <button @click="addApartment" class="w-fit py-2 px-5 gap-2.5 text-base md:text-lg xl:text-xl leading-[135.3%] border border-black rounded-full bg-[#D9D9D9]">
                 Сохранить
             </button>
+            <button @click="addImage" class="w-fit py-2 px-5 gap-2.5 text-base md:text-lg xl:text-xl leading-[135.3%] border border-black rounded-full bg-[#D9D9D9]">
+                Фото
+            </button>
         </div>
         <div class="flex gap-5 max-xl:flex-col">
             <div class="flex flex-col gap-5 w-full xl:w-[30%]">
                 <img v-if="imgSrc" :src="imgSrc" alt="">
                 <div v-else class="rounded-xl bg-[#808080] h-[387px]"></div>
-                <label class="w-full text-center py-2 bg-[#D9D9D9] border border-black rounded-full cursor-pointer">Редактировать фотографии<input type="file" name="image" accept="image/*" hidden @change="inputChange"></label>
+                <label class="w-full text-center py-2 bg-[#D9D9D9] border border-black rounded-full cursor-pointer">Редактировать фотографии<input :ref="inputFile" type="file" name="image" accept="image/*" hidden @change="inputChange"></label>
             </div>
             <div class="w-full xl:w-[70%] flex flex-col gap-5 text-black leading-[135.3%]">
                 <div class="flex max-lg:flex-col lg:items-center gap-5">
@@ -37,8 +40,10 @@
 <script setup>
     const imgSrc = ref()
     const imgName = ref()
+    const imgFile = ref()
     async function inputChange(e) {
         const inputFile = e.target.files[0]
+        imgFile.value = e.target.files[0]
         imgName.value = inputFile.name
         if(!inputFile) return
         const readData = (f) =>
@@ -87,26 +92,30 @@
             }
         })    
         if(createApartments.value) {
-            console.log(createApartments.value)
-            const { data:uploadImage, error:errorImage } = await useFetch(`${config.public.APIbaseURL}/api/admin/uploadImageApartment`, {
-                method: "POST",
-                data: imgSrc.value,
-                headers: { 'Content-Type': 'application/json', },
-                body: {
-                    apartmentId: createApartments._id,
-                    label: imgName.value
-                }
-            })    
-            if(uploadImage.value) {
-                console.log(uploadImage.value)
-                router.push('/admin')
-            }
-            if(errorImage.value) {
-                console.log(errorImage.value)
-            }
+            console.log(createApartments.value)            
         }
         if(errorApartments.value) {
             console.log(errorApartments.value)
+        }
+    }
+
+    const addImage = async () => {      
+        console.log(imgFile.value)
+        const formData = new FormData()
+        formData.append('image', imgFile.value)   
+        formData.append('apartmentId', '6554ca48f7dac1a700da308b')   
+        formData.append('label', 'test2')     
+        const { data, error } = await useFetch('https://oyster-app-ekdlk.ondigitalocean.app/api/admin/uploadImageApartment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'multipart/form-data' },
+            body: formData
+        })    
+        if(data.value) {
+            console.log(data.value)
+            router.push('/')
+        }
+        if(error.value) {
+            console.log(error.value)
         }
     }
 </script>
