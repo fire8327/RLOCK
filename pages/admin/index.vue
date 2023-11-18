@@ -10,7 +10,7 @@
                 </svg>
             </NuxtLink>
         </div>
-        <div class="flex flex-col gap-5 rounded-[25px] bg-[#D9D9D9] px-12 py-7 text-xl font-light text-left">
+        <div class="flex flex-col gap-5 rounded-[25px] bg-[#D9D9D9] px-12 py-7 text-xl font-light text-left max-lg:hidden">
             <div class="col-span-full px-7 pb-4 border-b border-black grid grid-cols-5 gap-x-10">
                 <p class="w-fit col-span-3">Адрес</p>
                 <p class="w-fit col-span-1">Редактирование</p>
@@ -20,6 +20,22 @@
                 <p class="w-fit col-span-3">{{ apartment.city }}, {{ apartment.address }}</p>
                 <button class="w-fit col-span-1 underline underline-offset-2">изменить</button>
                 <button @click="deleteApartments(apartment._id)" class="w-fit col-span-1 underline underline-offset-2">удалить</button>
+            </div>
+        </div>
+        <div class="flex flex-col gap-5 rounded-[25px] bg-[#D9D9D9] p-6 text-xl font-light lg:hidden">
+            <div class="flex flex-col gap-2.5 w-full">
+                <p>Отели</p>
+                <div class="w-full bg-black h-px"></div>
+                <div class="grid grid-cols-1 gap-12">
+                    <div class="flex flex-col gap-4" v-for="apartment in apartments">
+                        <div class="flex flex-col gap-4" v-if="apartment.image">
+                            <img :src="`${config.public.APIbaseURL}/${image.path}`" alt="" v-for="image in apartment.image">
+                        </div>
+                        <div class="w-full h-72 rounded-xl bg-[#7C7C7C" v-else></div>
+                        <p>{{ apartment.city }}, {{ apartment.address }}</p>
+                        <button @click="deleteApartments(apartment._id)" class="w-fit col-span-1 underline underline-offset-2">удалить</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

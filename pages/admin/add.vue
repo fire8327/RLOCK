@@ -96,7 +96,7 @@
             formData.append('image', imgFile.value)   
             formData.append('apartmentId', createApartments.value._id)   
             formData.append('label', imgName.value)     
-            const { data, error } = await useFetch('https://oyster-app-ekdlk.ondigitalocean.app/api/admin/uploadImageApartment', {
+            const { data, error } = await useFetch(`${config.public.APIbaseURL}/api/admin/uploadImageApartment`, {
                 method: 'POST',
                 body: formData
             })    
