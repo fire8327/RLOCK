@@ -31,5 +31,8 @@ export default defineNuxtConfig({
     autoImports: [
       'defineStore'
     ]
-  }
+  },
+  plugins: [
+    { src: '~/plugins/maps', mode: 'client' },
+  ]
 })

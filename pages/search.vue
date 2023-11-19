@@ -36,7 +36,7 @@
                     <button class="text-base relative after:absolute after:w-full after:h-px after:rounded-full after:bg-gradient-to-r after:from-[#B98CF2] after:to-[#48BBDE] after:left-0 after:bottom-0">Сбросить все фильтры</button>
                 </div>
                 <div class="flex items-center justify-between gap-4 leading-[135.3%] font-light">
-                    <p class="text-2xl">Найдено 332 варианта</p>
+                    <p class="text-2xl">Найдено {{ apartments.length }} варианта</p>
                     <div class="flex items-center gap-7">
                         <p>Сортировка</p>
                         <select class="focus:outline-none focus:right-0">
@@ -49,12 +49,15 @@
                         </select>
                     </div>
                 </div>
-                <div class="bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[1px] rounded-[20px]">
+                <div class="bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[1px] rounded-[20px]" v-for="apartment in apartments">
                     <div class="p-3 bg-white rounded-[20px] w-full h-full flex items-start gap-5">
-                        <div class="rounded-[13px] bg-[#7C7C7C] h-48 w-48"></div>
+                        <div class="flex flex-col gap-2 w-[30%]" v-if="apartment.image">
+                            <img :src="`${config.public.APIbaseURL}/${image.path}`" alt="" v-for="image in apartment.image" class="w-full h-full object-cover aspect-video">
+                        </div>
+                        <div class="w-full h-72 rounded-xl bg-[#7C7C7C]" v-else></div>
                         <div class="flex flex-col gap-2.5 leading-[135.3%]">
-                            <p class="text-xl font-normal">Отель Room Room</p>
-                            <p class="font-light text-base">Двухместный номер Standart c 2 кроватями</p>
+                            <p class="text-xl font-normal">{{ apartment.city }}</p>
+                            <p class="font-light text-base">{{ apartment.address }}</p>
                         </div>
                         <div class="flex flex-col gap-1 items-end">
                             <div class="bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[1px] rounded-[5px]">
@@ -69,8 +72,19 @@
                 </div>
             </div>
             <div class="w-[30%] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[1px] rounded-[25px]">
-                <div class="w-full h-[700px] rounded-[25px] bg-[#696969]">
-                    
+                <div class="w-full h-full rounded-[25px] bg-white overflow-hidden">
+                    <ClientOnly>
+                        <YandexMap :coordinates="[55.755864, 37.617698]" :zoom="10">
+                            <YandexMarker v-for="apartment in apartments" :coordinates="[apartment.location.lat, apartment.location.long]" :marker-id="apartment._id">
+                                <template #component>
+                                    <div class="flex flex-col h-fit gap-2">
+                                        <p class="font-medium text-lg">{{ apartment.city }}</p>
+                                        <p>{{ apartment.address }}</p>
+                                    </div>
+                                </template>
+                            </YandexMarker>
+                        </YandexMap>
+                    </ClientOnly>
                 </div>
             </div>
         </div>
@@ -78,5 +92,20 @@
 </template>
 
 <script setup>
+    import { yandexMap, yandexMarker } from 'vue-yandex-maps'
+    const name = ref('Custom')
 
+    const config = useRuntimeConfig()
+    const { data: apartments, error: errorApartments } = await useFetch(`${config.public.APIbaseURL}/api/admin/getApartments`)
+    const apartmentsLength = ref(apartments.value)
 </script>
+
+<style>
+    .yandex-container {
+        height: 700px;
+    }
+    .yandex-balloon {
+        height: 60px;
+        width: 250px;
+    }
+</style>

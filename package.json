@@ -23,7 +23,8 @@
   },
   "dependencies": {
     "@formkit/icons": "^1.2.2",
-    "@vueuse/components": "^10.5.0"
+    "@vueuse/components": "^10.5.0",
+    "vue-yandex-maps": "^1.1.0"
   },
   "overrides": {
     "vue": "latest"

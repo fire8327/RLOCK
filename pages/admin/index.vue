@@ -31,7 +31,7 @@
                         <div class="flex flex-col gap-4" v-if="apartment.image">
                             <img :src="`${config.public.APIbaseURL}/${image.path}`" alt="" v-for="image in apartment.image">
                         </div>
-                        <div class="w-full h-72 rounded-xl bg-[#7C7C7C" v-else></div>
+                        <div class="w-full h-72 rounded-xl bg-[#7C7C7C]" v-else></div>
                         <p>{{ apartment.city }}, {{ apartment.address }}</p>
                         <button @click="deleteApartments(apartment._id)" class="w-fit col-span-1 underline underline-offset-2">удалить</button>
                     </div>
