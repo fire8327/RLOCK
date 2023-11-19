@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 <div class="bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[1px] rounded-[20px]" v-for="apartment in apartments">
-                    <div class="p-3 bg-white rounded-[20px] w-full h-full flex items-start gap-5">
+                    <div class="p-3 bg-white rounded-[20px] w-full h-full flex items-start justify-between gap-5">
                         <div class="flex flex-col gap-2 w-[30%]" v-if="apartment.image">
                             <img :src="`${config.public.APIbaseURL}/${image.path}`" alt="" v-for="image in apartment.image" class="w-full h-full object-cover aspect-video">
                         </div>
