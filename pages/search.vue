@@ -1,10 +1,11 @@
 <template>
     <div class="my-10 flex flex-col gap-5 w-full">
+        <pre>{{ apartments }}</pre>
         <div class="w-full py-6 xl:py-8 px-6 md:px-12 xl:px-[90px] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] rounded-[25px] flex items-center gap-8 md:gap-12 xl:gap-48">
             <p class="NeutralFace text-2xl md:text-3xl xl:text-[32px] leading-[151.8%] uppercase text-white">отели в москве</p>
             <div class="flex items-center gap-5">
                 <div class="relative">
-                    <input type="text" class="rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] py-2.5 pl-5 pr-9 text-[#696969] w-[183px]" placeholder="Куда едем?">
+                    <input type="text" v-model="city" class="rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] py-2.5 pl-5 pr-9 text-[#696969] w-[183px]" placeholder="Куда едем?">
                     <svg class="absolute right-2 top-1/2 -translate-y-1/2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M10 11C10.7956 11 11.5587 10.6839 12.1213 10.1213C12.6839 9.55871 13 8.79565 13 8C13 7.20435 12.6839 6.44129 12.1213 5.87868C11.5587 5.31607 10.7956 5 10 5C9.20435 5 8.44129 5.31607 7.87868 5.87868C7.31607 6.44129 7 7.20435 7 8C7 8.79565 7.31607 9.55871 7.87868 10.1213C8.44129 10.6839 9.20435 11 10 11ZM10 6C10.5304 6 11.0391 6.21071 11.4142 6.58579C11.7893 6.96086 12 7.46957 12 8C12 8.53043 11.7893 9.03914 11.4142 9.41421C11.0391 9.78929 10.5304 10 10 10C9.46957 10 8.96086 9.78929 8.58579 9.41421C8.21071 9.03914 8 8.53043 8 8C8 7.46957 8.21071 6.96086 8.58579 6.58579C8.96086 6.21071 9.46957 6 10 6Z" fill="url(#paint0_linear_253_2809)"/>
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M3 8.123C3 12.125 7.223 19 10 19C12.777 19 17 12.125 17 8.123C17 4.191 13.868 1 10 1C6.132 1 3 4.191 3 8.123ZM16 8.123C16 11.643 12.096 18 10 18C7.904 18 4 11.643 4 8.123C4 4.74 6.688 2 10 2C13.312 2 16 4.74 16 8.123Z" fill="url(#paint1_linear_253_2809)"/>
@@ -21,8 +22,8 @@
                     </svg>
                 </div>
                 <div class="relative flex rounded-[10px] border border-[#B1B1B1] overflow-hidden w-[285px]">
-                    <input type="date" class="py-2.5 px-4 w-1/2 bg-[#EBEBEB] rounded-l-[10px]">
-                    <input type="date" class="py-2.5 px-4 w-1/2 bg-[#EBEBEB] rounded-r-[10px]">
+                    <input :value="dateFrom" @input="dateFrom = $event.target.value" type="date" class="py-2.5 px-4 w-1/2 bg-[#EBEBEB] rounded-l-[10px]">
+                    <input :value="dateTo" @input="dateTo = $event.target.value" type="date" class="py-2.5 px-4 w-1/2 bg-[#EBEBEB] rounded-r-[10px]">
                     <div class="h-full w-px top-0 left-1/2 -translate-x-1/2 bg-[#B1B1B1] absolute"></div>
                 </div>
                 <input type="text" class="rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] py-2.5 px-5 text-[#696969] w-[183px]" placeholder="Гости, номера">
@@ -64,7 +65,7 @@
                     <button class="text-base relative after:absolute after:w-full after:h-px after:rounded-full after:bg-gradient-to-r after:from-[#B98CF2] after:to-[#48BBDE] after:left-0 after:bottom-0">Сбросить все фильтры</button>
                 </div>
                 <div class="flex items-center justify-between gap-4 leading-[135.3%] font-light">
-                    <p class="text-2xl">Найдено {{ apartments.length }} варианта</p>
+                    <p class="text-2xl">Найдено {{ apartments.length }} вариантов</p>
                     <div class="flex items-center gap-7">
                         <p>Сортировка</p>
                         <select class="focus:outline-none focus:right-0">
@@ -79,8 +80,8 @@
                 </div>
                 <div class="bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[1px] rounded-[20px]" v-for="apartment in apartments">
                     <div class="p-3 bg-white rounded-[20px] w-full h-full flex items-start justify-between gap-5">
-                        <div class="flex flex-col gap-2 w-[30%]" v-if="apartment.image">
-                            <img :src="`${config.public.APIbaseURL}/${image.path}`" alt="" v-for="image in apartment.image" class="w-full h-full object-cover aspect-video">
+                        <div class="flex flex-col gap-2" v-if="apartment.image">
+                            <img :src="`${config.public.APIbaseURL}/${image.path}`" alt="" v-for="image in apartment.image" class="w-[300px] object-cover aspect-video">
                         </div>
                         <div class="w-full h-72 rounded-xl bg-[#7C7C7C]" v-else></div>
                         <div class="flex flex-col gap-2.5 leading-[135.3%]">
@@ -121,11 +122,13 @@
 
 <script setup>
     import { yandexMap, yandexMarker } from 'vue-yandex-maps'
-    const name = ref('Custom')
 
     const config = useRuntimeConfig()
-    const { data: apartments, error: errorApartments } = await useFetch(`${config.public.APIbaseURL}/api/admin/getApartments`)
-    const apartmentsLength = ref(apartments.value)
+    const { data, error } = await useFetch(`${config.public.APIbaseURL}/api/admin/getApartments`)
+
+    const apartments = ref(data.value)
+    const apartmentsFilter = ref([])
+    const { city, dateFrom, dateTo} = storeToRefs(useSearchStore())
 </script>
 
 <style>

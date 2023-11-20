@@ -10,10 +10,10 @@
             <p class="uppercase max-lg:hidden text-[52px] xl:text-[64px] text-white max-w-[1200px] NeutralFace">Откройте дверь к вашему идеальному дому </p>
             <div class="w-full py-6 rounded-[30px] border border-[#7B7B7B] dark:border-white bg-white">
                 <div class="px-6 md:px-12 xl:px-[90px] grid grid-cols-1 lg:grid-cols-4 gap-5 font-light">
-                    <input type="text" class="px-6 py-4 rounded-[15px] border border-[#B1B1B1] bg-[#EBEBEB] dark:bg-transparent placeholder-[#B1B1B1]" placeholder="Куда едем?">
+                    <input v-model="city" type="text" class="px-6 py-4 rounded-[15px] border border-[#B1B1B1] bg-[#EBEBEB] dark:bg-transparent placeholder-[#B1B1B1]" placeholder="Куда едем?">
                     <div class="flex items-center bg-[#EBEBEB] dark:bg-transparent rounded-[15px] border border-[#B1B1B1] relative">
-                        <input type="date" class="w-1/2 py-4 px-6 bg-[#EBEBEB] dark:bg-transparent rounded-l-[15px] focus:outline-none focus:ring-0 cursor-pointer">
-                        <input type="date" class="w-1/2 py-4 px-6 bg-[#EBEBEB] dark:bg-transparent rounded-r-[15px] focus:outline-none focus:ring-0 cursor-pointer">
+                        <input :value="dateFrom" @input="dateFrom = $event.target.value" type="date" class="w-1/2 py-4 px-6 bg-[#EBEBEB] dark:bg-transparent rounded-l-[15px] focus:outline-none focus:ring-0 cursor-pointer">
+                        <input :value="dateTo" @input="dateTo = $event.target.value" type="date" class="w-1/2 py-4 px-6 bg-[#EBEBEB] dark:bg-transparent rounded-r-[15px] focus:outline-none focus:ring-0 cursor-pointer">
                         <div class="absolute w-px h-full top-0 left-1/2 bg-[#B1B1B1]"></div>
                     </div>
                     <input type="text" class="px-6 py-4 rounded-[15px] border border-[#B1B1B1] bg-[#EBEBEB] dark:bg-transparent placeholder-[#B1B1B1]" placeholder="Гости, номера">
@@ -250,6 +250,9 @@
             message.value.title = null
         }, 3000);
     }
+
+
+    const { city, dateFrom, dateTo} = storeToRefs(useSearchStore())
 </script>
 
 <style>

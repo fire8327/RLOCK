@@ -28,7 +28,10 @@
                     <input type="text" v-model="apartment.location.lat" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[25%]" placeholder="Геопозиция">
                     <input type="text" v-model="apartment.location.long" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[25%]" placeholder="Геопозиция">
                 </div>
-                <input type="text" v-model="apartment.address" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[74%]" placeholder="Адрес">
+                <div class="flex max-lg:flex-col lg:items-center gap-5">
+                    <input type="text" v-model="apartment.address" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[74%]" placeholder="Адрес">
+                    <input type="text" v-model="apartment.pricePerDay" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[26%]" placeholder="Цена">
+                </div>
             </div>
         </div>
     </div>
@@ -69,7 +72,8 @@
         location: {
             lat: "",
             long: ""
-        }
+        },
+        pricePerDay: ""
     })
 
     const addApartment = async () => {        
@@ -85,7 +89,8 @@
                 branch: apartment.value.branch,
                 station: apartment.value.station,
                 address: apartment.value.address,
-                location: apartment.value.location
+                location: apartment.value.location,
+                pricePerDay: apartment.value.pricePerDay
             }
         })    
         if(createApartments.value) {
