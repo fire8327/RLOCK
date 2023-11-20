@@ -1,5 +1,33 @@
 <template>
     <div class="my-10 flex flex-col gap-5 w-full">
+        <div class="w-full py-6 xl:py-8 px-6 md:px-12 xl:px-[90px] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] rounded-[25px] flex items-center gap-8 md:gap-12 xl:gap-48">
+            <p class="NeutralFace text-2xl md:text-3xl xl:text-[32px] leading-[151.8%] uppercase text-white">отели в москве</p>
+            <div class="flex items-center gap-5">
+                <div class="relative">
+                    <input type="text" class="rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] py-2.5 pl-5 pr-9 text-[#696969] w-[183px]" placeholder="Куда едем?">
+                    <svg class="absolute right-2 top-1/2 -translate-y-1/2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10 11C10.7956 11 11.5587 10.6839 12.1213 10.1213C12.6839 9.55871 13 8.79565 13 8C13 7.20435 12.6839 6.44129 12.1213 5.87868C11.5587 5.31607 10.7956 5 10 5C9.20435 5 8.44129 5.31607 7.87868 5.87868C7.31607 6.44129 7 7.20435 7 8C7 8.79565 7.31607 9.55871 7.87868 10.1213C8.44129 10.6839 9.20435 11 10 11ZM10 6C10.5304 6 11.0391 6.21071 11.4142 6.58579C11.7893 6.96086 12 7.46957 12 8C12 8.53043 11.7893 9.03914 11.4142 9.41421C11.0391 9.78929 10.5304 10 10 10C9.46957 10 8.96086 9.78929 8.58579 9.41421C8.21071 9.03914 8 8.53043 8 8C8 7.46957 8.21071 6.96086 8.58579 6.58579C8.96086 6.21071 9.46957 6 10 6Z" fill="url(#paint0_linear_253_2809)"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3 8.123C3 12.125 7.223 19 10 19C12.777 19 17 12.125 17 8.123C17 4.191 13.868 1 10 1C6.132 1 3 4.191 3 8.123ZM16 8.123C16 11.643 12.096 18 10 18C7.904 18 4 11.643 4 8.123C4 4.74 6.688 2 10 2C13.312 2 16 4.74 16 8.123Z" fill="url(#paint1_linear_253_2809)"/>
+                        <defs>
+                            <linearGradient id="paint0_linear_253_2809" x1="7.19626" y1="5" x2="13.0753" y2="5.33124" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#B98CF2"/>
+                            <stop offset="1" stop-color="#48BBDE"/>
+                            </linearGradient>
+                            <linearGradient id="paint1_linear_253_2809" x1="3.45794" y1="0.999998" x2="17.1929" y2="1.6019" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#B98CF2"/>
+                            <stop offset="1" stop-color="#48BBDE"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="relative flex rounded-[10px] border border-[#B1B1B1] overflow-hidden w-[285px]">
+                    <input type="date" class="py-2.5 px-4 w-1/2 bg-[#EBEBEB] rounded-l-[10px]">
+                    <input type="date" class="py-2.5 px-4 w-1/2 bg-[#EBEBEB] rounded-r-[10px]">
+                    <div class="h-full w-px top-0 left-1/2 -translate-x-1/2 bg-[#B1B1B1] absolute"></div>
+                </div>
+                <input type="text" class="rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] py-2.5 px-5 text-[#696969] w-[183px]" placeholder="Гости, номера">
+            </div>
+        </div>
         <div class="flex items-start gap-5 w-full">
             <div class="w-[20%] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[2px] rounded-[25px]">
                 <div class="py-6 md:py-8 xl:py-10 px-4 xl:px-7 bg-white rounded-[25px] w-full h-full flex flex-col gap-5">
