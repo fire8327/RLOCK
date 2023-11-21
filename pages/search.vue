@@ -35,34 +35,28 @@
                     <div class="flex flex-col gap-4">
                         <p class="font-light leading-[135.3%] text-base">Цена (₽)</p>
                         <div class="w-full relative flex rounded-[10px] border border-[#B1B1B1] overflow-hidden">
-                            <input type="text" class="py-3 px-4 w-1/2 bg-[#EBEBEB] rounded-l-[10px]" placeholder="от 2000">
-                            <input type="text" class="py-3 px-4 w-1/2 bg-[#EBEBEB] rounded-r-[10px]" placeholder="до 15000">
+                            <input v-model="filters.minPrice" type="text" class="py-3 px-4 w-1/2 bg-[#EBEBEB] rounded-l-[10px]" placeholder="от 2000">
+                            <input v-model="filters.maxPrice" type="text" class="py-3 px-4 w-1/2 bg-[#EBEBEB] rounded-r-[10px]" placeholder="от 1500000">
                             <div class="h-full w-px top-0 left-1/2 -translate-x-1/2 bg-[#B1B1B1] absolute"></div>
                         </div>
                     </div>
                     <div class="flex flex-col gap-2.5">
-                        <p>Расположение</p>
-                        <div class="flex items-center justify-between gap-4">
-                            <p>Метро</p>
-                            <div class="flex flex-col gap-0.5">
-                                <select class="focus:outline-none focus:right-0">
-                                    <option value="" disabled selected>Выбрать</option>
-                                    <option value="">Метро 1</option>
-                                    <option value="">Метро 2</option>
-                                    <option value="">Метро 3</option>
-                                    <option value="">Метро 4</option>
-                                    <option value="">Метро 5</option>
-                                </select>
-                                <div class="w-full h-px rounded-full bg-gradient-to-r from-[#B98CF2] to-[#48BBDE]"></div>
-                            </div>
+                        <p>Метро</p>
+                        <div class="flex flex-col gap-0.5">
+                            <select class="focus:outline-none focus:right-0" v-model="filters.station">
+                                <option value="Все" selected>Все</option>
+                                <option v-for="station in stations" :value="station">{{ station }}</option>
+                            </select>
+                            <div class="w-full h-px rounded-full bg-gradient-to-r from-[#B98CF2] to-[#48BBDE]"></div>
                         </div>
                     </div>
+                    <button @click="filterApartments" class="text-white py-2 px-4 rounded-full bg-gradient-to-r from-[#B98CF2] to-[#48BBDE]">Применить</button>
                 </div>
             </div>
             <div class="w-[50%] flex flex-col gap-5">
                 <div class="flex items-center justify-between gap-4 leading-[135.3%] font-light">
                     <p class="text-2xl">Выбранные фильтры:</p>
-                    <button class="text-base relative after:absolute after:w-full after:h-px after:rounded-full after:bg-gradient-to-r after:from-[#B98CF2] after:to-[#48BBDE] after:left-0 after:bottom-0">Сбросить все фильтры</button>
+                    <button @click="removeFilter" class="text-base relative after:absolute after:w-full after:h-px after:rounded-full after:bg-gradient-to-r after:from-[#B98CF2] after:to-[#48BBDE] after:left-0 after:bottom-0">Сбросить все фильтры</button>
                 </div>
                 <div class="flex items-center justify-between gap-4 leading-[135.3%] font-light">
                     <p class="text-2xl">Найдено {{ apartments.length }} вариантов</p>
@@ -81,7 +75,7 @@
                 <div class="bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[1px] rounded-[20px]" v-for="apartment in apartments">
                     <div class="p-3 bg-white rounded-[20px] w-full h-full flex items-start justify-between gap-5">
                         <div class="flex flex-col gap-2" v-if="apartment.image">
-                            <img :src="`${config.public.APIbaseURL}/${image.path}`" alt="" v-for="image in apartment.image" class="w-[300px] object-cover aspect-video">
+                            <img :src="`${config.public.APIbaseURL}/${image.path}`" alt="" v-for="image in apartment.image" class="w-full md:w-[300px] max-w-max object-cover aspect-video">
                         </div>
                         <div class="w-full h-72 rounded-xl bg-[#7C7C7C]" v-else></div>
                         <div class="flex flex-col gap-2.5 leading-[135.3%]">
@@ -96,6 +90,7 @@
                                 </div>
                             </div>
                             <p class="text-[10px] text-[#696969]">256 отзывов</p>
+                            <p>{{ apartment.pricePerDay }}</p>
                         </div>
                     </div>
                 </div>
@@ -123,12 +118,44 @@
 <script setup>
     import { yandexMap, yandexMarker } from 'vue-yandex-maps'
 
+    /* getData */
     const config = useRuntimeConfig()
     const { data, error } = await useFetch(`${config.public.APIbaseURL}/api/admin/getApartments`)
 
-    const apartments = ref(data.value)
-    const apartmentsFilter = ref([])
+    /* create filters */
+    const apartments =ref(data.value)
     const { city, dateFrom, dateTo} = storeToRefs(useSearchStore())
+    
+    /* add undergrou, price, create filters */
+    const stations = ref([])
+    const prices = []
+    const filters = ref({
+        minPrice: 0,
+        maxPrice: 100000000,
+        station: 'Все'
+    })
+    data.value.forEach(el => {
+        if(stations.value.indexOf(el.station) === -1) {
+            stations.value.push(el.station)
+        }
+        prices.push(el.pricePerDay)
+    })
+    filters.value.minPrice = Math.min(...prices)
+    filters.value.maxPrice = Math.max(...prices)
+
+    /* filterApartments */
+    const filterApartments = () => {
+        apartments.value = data.value    
+        const filter = apartments.value.filter(el => {
+            return (el.pricePerDay >= filters.value.minPrice || !filters.value.minPrice) && (el.pricePerDay <= filters.value.maxPrice || !filters.value.maxPrice) && (el.station == filters.value.station || filters.value.station == 'Все')
+        })     
+        apartments.value = filter
+    }
+
+    /* removeFilter */
+    const removeFilter = () => {
+        apartments.value = data.value
+    }
 </script>
 
 <style>
