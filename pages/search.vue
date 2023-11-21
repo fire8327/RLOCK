@@ -1,6 +1,6 @@
 <template>
     <div class="my-10 flex flex-col gap-5 w-full">
-        <!-- <pre>{{ apartments }}</pre> -->
+        <pre>{{ apartments }}</pre>
         <!-- <div class="w-full py-6 xl:py-8 px-6 md:px-12 xl:px-[90px] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] rounded-[25px] flex items-center gap-8 md:gap-12 xl:gap-48">
             <p class="NeutralFace text-2xl md:text-3xl xl:text-[32px] leading-[151.8%] uppercase text-white">отели в москве</p>
             <div class="flex items-center gap-5">
