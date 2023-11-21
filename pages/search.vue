@@ -155,6 +155,9 @@
     /* removeFilter */
     const removeFilter = () => {
         apartments.value = data.value
+        filters.value.minPrice = Math.min(...prices)
+        filters.value.maxPrice = Math.max(...prices)
+        filters.value.station = 'Все'
     }
 </script>
 
