@@ -94,6 +94,7 @@
                             <div class="flex flex-col gap-2.5 leading-[135.3%] grow">
                                 <p class="text-xl font-normal">{{ apartment.city }}</p>
                                 <p class="font-light text-base">{{ apartment.address }}</p>
+                                <p class="font-light text-base">Станция метро - {{ apartment.station }}</p>
                             </div>
                             <div class="flex flex-col gap-1 items-end">
                                 <div class="bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[1px] rounded-[5px]">
