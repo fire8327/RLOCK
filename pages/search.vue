@@ -1,6 +1,6 @@
 <template>
     <div class="my-10 flex flex-col gap-5 w-full">
-        <pre>{{ apartments }}</pre>
+        <!-- <pre>{{ apartments }}</pre> -->
         <!-- <div class="w-full py-6 xl:py-8 px-6 md:px-12 xl:px-[90px] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] rounded-[25px] flex items-center gap-8 md:gap-12 xl:gap-48">
             <p class="NeutralFace text-2xl md:text-3xl xl:text-[32px] leading-[151.8%] uppercase text-white">отели в москве</p>
             <div class="flex items-center gap-5">
@@ -38,7 +38,7 @@
                     <div class="absolute w-px h-full top-0 left-1/2 bg-[#B1B1B1]"></div>
                 </div>
                 <input type="text" class="px-6 py-4 rounded-[15px] border border-[#B1B1B1] bg-[#EBEBEB] dark:bg-transparent placeholder-[#B1B1B1]" placeholder="Гости, номера">
-                <button class="py-[14px] text-center text-white rounded-[15px] bg-gradient-to-l from-[#B98CF2] to-[#40BDDB] text-2xl transition-all duration-500 hover:shadow-[4px_4px_8px_0px_rgba(0,0,0,0.25)_inset]">Найти</button>
+                <button @click="modifyData" class="py-[14px] text-center text-white rounded-[15px] bg-gradient-to-l from-[#B98CF2] to-[#40BDDB] text-2xl transition-all duration-500 hover:shadow-[4px_4px_8px_0px_rgba(0,0,0,0.25)_inset]">Найти</button>
             </div>
         </div>
         <div class="flex flex-col gap-5"> 
@@ -49,7 +49,7 @@
                             <p class="font-light leading-[135.3%] text-base">Цена (₽)</p>
                             <div class="w-full relative flex rounded-[10px] border border-[#B1B1B1] overflow-hidden">
                                 <input v-model="filters.minPrice" type="text" class="py-3 px-4 w-1/2 bg-[#EBEBEB] rounded-l-[10px]" placeholder="от 2000">
-                                <input v-model="filters.maxPrice" type="text" class="py-3 px-4 w-1/2 bg-[#EBEBEB] rounded-r-[10px]" placeholder="от 1500000">
+                                <input v-model="filters.maxPrice" type="text" class="py-3 px-4 w-1/2 bg-[#EBEBEB] rounded-r-[10px]" placeholder="до 1500000">
                                 <div class="h-full w-px top-0 left-1/2 -translate-x-1/2 bg-[#B1B1B1] absolute"></div>
                             </div>
                         </div>
@@ -94,6 +94,10 @@
                             <div class="flex flex-col gap-2.5 leading-[135.3%] grow">
                                 <p class="text-xl font-normal">{{ apartment.city }}</p>
                                 <p class="font-light text-base">{{ apartment.address }}</p>
+                                <div class="flex items-center gap-4">
+                                    <p>Первый {{ new Date (apartment.bookedDates.at(0)).toISOString().substring(0, 10) }}</p>
+                                    <p>Последний {{ new Date (apartment.bookedDates.at(-1)).toISOString().substring(0, 10) }}</p>
+                                </div>
                             </div>
                             <div class="flex flex-col gap-1 items-end">
                                 <div class="bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[1px] rounded-[5px]">
@@ -139,17 +143,21 @@
     /* modify data */
     const { city, dateFrom, dateTo} = storeToRefs(useSearchStore())
     const filterData = ref()
-    const apartments = ref(data.value)
+    const apartments = ref()
     const modifyData = () => {
         apartments.value = data.value
         filterData.value = apartments.value.filter(el => {
-            /* if (el.pricePerDay < filters.value.minPrice && filters.value.minPrice) {
+            const result = el.bookedDates.find(item => {
+                return dateFrom.value && dateTo.value && new Date (item).toISOString().substring(0, 10) >= dateFrom.value && new Date (item).toISOString().substring(0, 10) <= dateTo.value
+            })
+            if (result) {
                 return false
             }
-            return true */
+            return true
         }) 
         apartments.value = filterData.value
     }
+    modifyData()
     
     /* add undergrou, price, create filters */
     const stations = ref([])
@@ -171,7 +179,7 @@
 
     /* filterApartments */
     const filterApartments = () => {
-        apartments.value = data.value    
+        apartments.value = filterData.value    
         const filter = apartments.value.filter(el => {
             if (el.pricePerDay < filters.value.minPrice && filters.value.minPrice) {
                 return false
@@ -189,7 +197,7 @@
 
     /* removeFilter */
     const removeFilter = () => {
-        apartments.value = data.value
+        apartments.value = filterData.value
         filters.value.minPrice = Math.min(...prices)
         filters.value.maxPrice = Math.max(...prices)
         filters.value.station = 'Все'
