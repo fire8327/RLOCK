@@ -136,13 +136,25 @@
     const config = useRuntimeConfig()
     const { data, error } = await useFetch(`${config.public.APIbaseURL}/api/admin/getApartments`)
 
-    /* create filters */
-    const apartments = ref(data.value)
+    /* modify data */
     const { city, dateFrom, dateTo} = storeToRefs(useSearchStore())
+    const filterData = ref()
+    const apartments = ref(data.value)
+    const modifyData = () => {
+        apartments.value = data.value
+        filterData.value = apartments.value.filter(el => {
+            /* if (el.pricePerDay < filters.value.minPrice && filters.value.minPrice) {
+                return false
+            }
+            return true */
+        }) 
+        apartments.value = filterData.value
+    }
     
     /* add undergrou, price, create filters */
     const stations = ref([])
     const prices = []
+    const dates = []
     const filters = ref({
         minPrice: 0,
         maxPrice: 100000000,
@@ -161,7 +173,16 @@
     const filterApartments = () => {
         apartments.value = data.value    
         const filter = apartments.value.filter(el => {
-            return (el.pricePerDay >= filters.value.minPrice || !filters.value.minPrice) && (el.pricePerDay <= filters.value.maxPrice || !filters.value.maxPrice) && (el.station == filters.value.station || filters.value.station == 'Все')
+            if (el.pricePerDay < filters.value.minPrice && filters.value.minPrice) {
+                return false
+            }
+            if (el.pricePerDay > filters.value.maxPrice && filters.value.maxPrice) {
+                return false
+            }
+            if (el.station != filters.value.station && filters.value.station != 'Все') {
+                return false
+            }
+            return true
         })     
         apartments.value = filter
     }
@@ -172,7 +193,7 @@
         filters.value.minPrice = Math.min(...prices)
         filters.value.maxPrice = Math.max(...prices)
         filters.value.station = 'Все'
-    }
+    }    
 </script>
 
 <style>
