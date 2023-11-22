@@ -94,10 +94,6 @@
                             <div class="flex flex-col gap-2.5 leading-[135.3%] grow">
                                 <p class="text-xl font-normal">{{ apartment.city }}</p>
                                 <p class="font-light text-base">{{ apartment.address }}</p>
-                                <div class="flex items-center gap-4">
-                                    <p>Первый {{ new Date (apartment.bookedDates.at(0)).toISOString().substring(0, 10) }}</p>
-                                    <p>Последний {{ new Date (apartment.bookedDates.at(-1)).toISOString().substring(0, 10) }}</p>
-                                </div>
                             </div>
                             <div class="flex flex-col gap-1 items-end">
                                 <div class="bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[1px] rounded-[5px]">
