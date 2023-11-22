@@ -67,11 +67,11 @@
                     </div>
                 </div>
                 <div class="w-full lg:w-[70%] flex flex-col gap-5">
-                    <div class="flex items-center justify-between gap-4 leading-[135.3%] font-light">
+                    <div class="flex max-md:flex-col md:items-center md:justify-between gap-4 leading-[135.3%] font-light">
                         <p class="text-2xl">Выбранные фильтры:</p>
-                        <button @click="removeFilter" class="text-base relative after:absolute after:w-full after:h-px after:rounded-full after:bg-gradient-to-r after:from-[#B98CF2] after:to-[#48BBDE] after:left-0 after:bottom-0">Сбросить все фильтры</button>
+                        <button @click="removeFilter" class="max-md:w-fit text-base relative after:absolute after:w-full after:h-px after:rounded-full after:bg-gradient-to-r after:from-[#B98CF2] after:to-[#48BBDE] after:left-0 after:bottom-0">Сбросить все фильтры</button>
                     </div>
-                    <div class="flex items-center justify-between gap-4 leading-[135.3%] font-light">
+                    <div class="flex max-md:flex-col md:items-center md:justify-between gap-4 leading-[135.3%] font-light">
                         <p class="text-2xl">Найдено {{ apartments.length }} вариантов</p>
                         <div class="flex items-center gap-7">
                             <p>Сортировка</p>
