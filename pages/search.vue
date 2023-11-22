@@ -104,7 +104,7 @@
                                     </div>
                                 </div>
                                 <p class="text-[10px] text-[#696969]">256 отзывов</p>
-                                <p>{{ apartment.pricePerDay }}</p>
+                                <p class="text-2xl font-medium">{{ apartment.pricePerDay.toLocaleString() }} ₽</p>
                             </div>
                         </div>
                     </div>
