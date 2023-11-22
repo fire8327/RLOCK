@@ -42,8 +42,8 @@
             </div>
         </div>
         <div class="flex flex-col gap-5"> 
-            <div class="flex items-start gap-5 w-full">
-                <div class="w-[30%] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[2px] rounded-[25px]">
+            <div class="flex max-lg:flex-col lg:items-start gap-5 w-full">
+                <div class="w-full lg:w-[30%] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[2px] rounded-[25px]">
                     <div class="py-6 md:py-8 xl:py-10 px-4 xl:px-7 bg-white rounded-[25px] w-full h-full flex flex-col gap-5">
                         <div class="flex flex-col gap-4">
                             <p class="font-light leading-[135.3%] text-base">Цена (₽)</p>
@@ -66,7 +66,7 @@
                         <button @click="filterApartments" class="text-white py-2 px-4 rounded-full bg-gradient-to-r from-[#B98CF2] to-[#48BBDE]">Применить</button>
                     </div>
                 </div>
-                <div class="w-[70%] flex flex-col gap-5">
+                <div class="w-full lg:w-[70%] flex flex-col gap-5">
                     <div class="flex items-center justify-between gap-4 leading-[135.3%] font-light">
                         <p class="text-2xl">Выбранные фильтры:</p>
                         <button @click="removeFilter" class="text-base relative after:absolute after:w-full after:h-px after:rounded-full after:bg-gradient-to-r after:from-[#B98CF2] after:to-[#48BBDE] after:left-0 after:bottom-0">Сбросить все фильтры</button>
@@ -86,7 +86,7 @@
                         </div>
                     </div>
                     <div class="bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[1px] rounded-[20px]" v-for="apartment in apartments">
-                        <div class="p-3 bg-white rounded-[20px] w-full h-full flex items-start justify-between gap-5">
+                        <div class="p-3 bg-white rounded-[20px] w-full h-full flex max-md:flex-col md:items-start md:justify-between gap-5">
                             <div class="flex flex-col gap-2" v-if="apartment.image">
                                 <img :src="`${config.public.APIbaseURL}/${image.path}`" alt="" v-for="image in apartment.image" class="w-full md:w-[300px] max-w-max object-cover aspect-video rounded-[13px]">
                             </div>
@@ -96,7 +96,7 @@
                                 <p class="font-light text-base">{{ apartment.address }}</p>
                                 <p class="font-light text-base">Станция метро - {{ apartment.station }}</p>
                             </div>
-                            <div class="flex flex-col gap-1 items-end">
+                            <div class="flex flex-col gap-1 items-start md:items-end">
                                 <div class="bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[1px] rounded-[5px]">
                                     <div class="relative py-2 pl-4 pr-20 font-light leading-[135.3%] rounded-[5px] bg-[#D9D9D9] w-full h-full">
                                         <p class="text-sm">Превосходно</p>
