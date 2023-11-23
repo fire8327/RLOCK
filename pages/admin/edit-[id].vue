@@ -2,60 +2,73 @@
     <div class="flex flex-col gap-5 py-10">
         <div class="flex md:items-end md:justify-between max-md:flex-col gap-4">
             <p class="text-lg md:text-xl xl:text-2xl leading-[135.3%]">Редактирование недвижимости</p>
-            <button class="w-fit py-2 px-5 gap-2.5 text-base md:text-lg xl:text-xl leading-[135.3%] border border-black rounded-full bg-[#D9D9D9]">
-                Удалить
-            </button>
-        </div>
-        <div class="flex gap-5 max-xl:flex-col">
-            <div class="flex flex-col gap-5 w-full xl:w-[30%]">
-                <div class="rounded-xl bg-[#808080] h-[387px]"></div>
-                <button class="w-full text-center py-2 bg-[#D9D9D9] border border-black rounded-full">Редактировать фотографии</button>
+            <div class="flex items-center gap-4">                
+                <button @click="updateApartment" class="w-fit py-2 px-5 gap-2.5 text-base md:text-lg xl:text-xl leading-[135.3%] border border-black rounded-full bg-[#D9D9D9]">
+                    Сохранить
+                </button>
+                <button @click="router.go(-1)" class="w-fit py-2 px-5 gap-2.5 text-base md:text-lg xl:text-xl leading-[135.3%] border border-black rounded-full bg-[#D9D9D9]">
+                    Назад
+                </button>
             </div>
-            <div class="w-full xl:w-[70%] flex flex-col gap-3 text-black leading-[135.3%]">
-                <div class="flex max-lg:flex-col lg:items-center gap-5">
-                    <div class="flex flex-col lg:w-[25%]">
-                        <p class="text-[#606060] text-[10px] ml-1.5 font-light -mb-1.5">Страна</p>
-                        <input type="text" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl" value="Россия" placeholder="Страна">
-                    </div>
-                    <div class="flex flex-col lg:w-[45%]">
-                        <p class="text-[#606060] text-[10px] ml-1.5 font-light -mb-1.5">Область</p>
-                        <input type="text" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl" value="Московская область" placeholder="Область">
-                    </div>
-                    <div class="flex flex-col lg:w-[30%]">
-                        <p class="text-[#606060] text-[10px] ml-1.5 font-light -mb-1.5">Город</p>
-                        <input type="text" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl" value="Москва" placeholder="Город">
-                    </div>
-                </div>
-                <div class="flex max-lg:flex-col lg:items-center gap-5">
-                    <div class="flex flex-col lg:w-[25%]">
-                        <p class="text-[#606060] text-[10px] ml-1.5 font-light -mb-1.5">Округ</p>
-                        <input type="text" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl" value="ЮАО" placeholder="Округ">
-                    </div>
-                    <div class="flex flex-col lg:w-[45%]">
-                        <p class="text-[#606060] text-[10px] ml-1.5 font-light -mb-1.5">Ветка метро</p>
-                        <input type="text" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl" value="Чертаново Северное" placeholder="Ветка метро">
-                    </div>
-                    <div class="flex flex-col lg:w-[30%]">
-                        <p class="text-[#606060] text-[10px] ml-1.5 font-light -mb-1.5">Метро</p>
-                        <input type="text" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl" value="Чертановская" placeholder="Метро">
-                    </div>
-                </div>
-                <div class="flex max-lg:flex-col lg:items-end gap-5">
-                    <div class="flex flex-col lg:w-[50%]">
-                        <p class="text-[#606060] text-[10px] ml-1.5 font-light -mb-1.5">Линия метро</p>
-                        <input type="text" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl" value="Серпуховоско-Тимирязевская" placeholder="Линия метро">
-                    </div>
-                    <div class="flex flex-col lg:w-[25%]">
-                        <p class="text-[#606060] text-[10px] ml-1.5 font-light -mb-1.5">Геопозиция на Яндекс.Карте</p>
-                        <input type="text" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl" value="55.641569" placeholder="Геопозиция">
-                    </div>
-                    <input type="text" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[25%]" value="37.609119" placeholder="Геопозиция">
-                </div>
-                <div class="flex flex-col">
-                    <p class="text-[#606060] text-[10px] ml-1.5 font-light -mb-1.5">Адрес</p>
-                    <input type="text" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[74%]" value="Балаклавский проспект, д. 10, корп.3, кв. 5" placeholder="Адрес">
-                </div>
+        </div>
+        <div class="w-full flex flex-col gap-5 text-black leading-[135.3%]">
+            <div class="flex max-lg:flex-col lg:items-center gap-5">
+                <input type="text" v-model="apartment[0].country" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[25%]" placeholder="Страна">
+                <input type="text" v-model="apartment[0].region" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[45%]" placeholder="Область">
+                <input type="text" v-model="apartment[0].city" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[30%]" placeholder="Город">
+            </div>
+            <div class="flex max-lg:flex-col lg:items-center gap-5">
+                <input type="text" v-model="apartment[0].okrug" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[25%]" placeholder="Округ">
+                <input type="text" v-model="apartment[0].district" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[45%]" placeholder="Район">
+                <input type="text" v-model="apartment[0].branch" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[30%]" placeholder="Ветка метро">
+            </div>
+            <div class="flex max-lg:flex-col lg:items-center gap-5">
+                <input type="text" v-model="apartment[0].station" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[50%]" placeholder="Станция метро">
+                <input type="text" v-model="apartment[0].location.lat" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[25%]" placeholder="Геопозиция x">
+                <input type="text" v-model="apartment[0].location.long" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[25%]" placeholder="Геопозиция y">
+            </div>
+            <div class="flex max-lg:flex-col lg:items-center gap-5">
+                <input type="text" v-model="apartment[0].address" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[74%]" placeholder="Адрес">
+                <input type="text" v-model="apartment[0].pricePerDay" class="py-1.5 px-5 bg-[#D9D9D9] focus:outline-none rounded-[10px] border border-[#6A6A6A] w-full text-2xl lg:w-[26%]" placeholder="Цена">
             </div>
         </div>
     </div>
 </template>
+
+<script setup>
+    const router= useRouter()
+    const route = useRoute()
+
+    const config = useRuntimeConfig()    
+    const apartment = ref()
+    const { data: apartments, error: errorApartments } = await useFetch(`${config.public.APIbaseURL}/api/admin/getApartments`)
+    apartment.value =  apartments.value.filter(el => {
+        return el._id == route.params.id
+    })
+
+    const updateApartment = async () => {
+        const { data, error, pending } = await useFetch(`${config.public.APIbaseURL}/api/admin/editApartment/${route.params.id}`, {
+            method: "PATCH",
+            headers: { 'Content-Type': 'application/json' },
+            body: {
+                country: apartment.value[0].country,
+                region: apartment.value[0].region,
+                city: apartment.value[0].city,
+                okrug: apartment.value[0].okrug,
+                district: apartment.value[0].district,
+                branch: apartment.value[0].branch,
+                station: apartment.value[0].station,
+                address: apartment.value[0].address,
+                location: apartment.value[0].location,
+                pricePerDay: apartment.value[0].pricePerDay
+            }
+        })    
+        if(data.value) {
+            console.log(data.value)
+            router.push('/admin')
+        }
+        if(error.value) {
+            console.log(error.value)
+        }
+    }
+</script>

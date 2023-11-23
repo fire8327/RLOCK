@@ -18,7 +18,7 @@
             </div>
             <div class="col-span-full grid grid-cols-5 gap-x-10" v-for="apartment in apartments">
                 <p class="w-fit col-span-3">{{ apartment.city }}, {{ apartment.address }}</p>
-                <button class="w-fit col-span-1 underline underline-offset-2">изменить</button>
+                <NuxtLink :to="`/admin/edit-${apartment._id}`" class="w-fit col-span-1 underline underline-offset-2">изменить</NuxtLink>
                 <button @click="deleteApartments(apartment._id)" class="w-fit col-span-1 underline underline-offset-2">удалить</button>
             </div>
         </div>
