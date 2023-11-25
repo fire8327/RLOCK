@@ -58,12 +58,16 @@
                         <p class="font-bold text-lg md:text-xl xl:text-2xl">Есть вопрос?</p>
                         <p class="font-light text-base md:text-lg xl:text-xl leading-[165.3%]">Заполните форму обратной связи и мы свяжемся с вами через 30 минут.</p>
                     </div>
-                    <div class="flex flex-col gap-4 w-full">
-                        <input type="text" class="rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] text-base py-2.5 px-5 placeholder-[#696969] focus:ring-0 focus:outline-none focus:appearance-none" placeholder="Ваше имя">
-                        <input type="email" class="rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] text-base py-2.5 px-5 placeholder-[#696969] focus:ring-0 focus:outline-none focus:appearance-none" placeholder="Email">
-                        <textarea type="email" class="rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] text-base py-2.5 px-5 placeholder-[#696969] focus:ring-0 focus:outline-none focus:appearance-none resize-none h-24" placeholder="Текст вопроса"></textarea>
+                    <form @submit.prevent="submitForm" id="feedbackForm" class="flex flex-col gap-4 w-full">
+                        <input v-model="form.name" type="text" class="rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] text-base py-2.5 px-5 placeholder-[#696969] focus:ring-0 focus:outline-none focus:appearance-none" placeholder="Ваше имя">
+                        <input v-model="form.email" type="email" class="rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] text-base py-2.5 px-5 placeholder-[#696969] focus:ring-0 focus:outline-none focus:appearance-none" placeholder="Email">
+                        <textarea v-model="form.msg" class="rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] text-base py-2.5 px-5 placeholder-[#696969] focus:ring-0 focus:outline-none focus:appearance-none resize-none h-24" placeholder="Текст вопроса"></textarea>
                         <button class="text-white font-normal bg-gradient-to-r from-[#48BBDE] to-[#B190F1] rounded-[10px] text-center text-xl md:text-xl xl:text-2xl py-3 w-full">Отправить</button>
-                    </div>
+                        <button type="button" @click="message.title = null" class="fixed top-10 right-10 z-[41] cursor-pointer flex items-center gap-4 px-6 py-2 rounded-2xl w-fit text-[#131313] bg-white dark:text-white dark:bg-[#131313]" :class="message.type ? 'shadow-[0_0_20px_-7px]' : 'bg-red-500'" v-if="message.title">
+                            <span>{{message.title}}</span>
+                            <Icon name="material-symbols:close-rounded" class="text-xl"/>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -90,6 +94,41 @@
 
 <script setup>
     import { yandexMap, yandexMarker } from 'vue-yandex-maps'
+
+    const form = ref({
+        name: "",
+        email: "",
+        msg: ""
+    })
+
+    const token = "6478570357:AAHRiEm9vOmK0oVMzoVAbxMGxIZl1NK86oc"
+    const chat_id = "-4029823062"
+    const URL = `https://api.telegram.org/bot${token}/sendMessage`
+
+    let message = ref({title:null, type:true})
+
+    const submitForm = async () => {
+        let msg = "<b>Сообщение с сайта!</b>\n"
+        + `<b>Имя:</b> ${form.value.name}\n`
+        + `<b>Email:</b> ${form.value.email}\n`
+        + `<b>Вопрос:</b> ${form.value.msg}\n` 
+        const {data, error} = await useFetch(URL,{
+            body:{
+                'chat_id': chat_id,
+                'parse_mode': 'html',
+                'text': msg
+            },
+            method:'post'        
+	    })
+        if (error.value) return message.value.title = 'При отправке произошла ошибка!', message.value.type = false
+	    message.value.title = 'Успешная отправка!', message.value.type = true 
+        form.value.name = ""
+        form.value.email = ""
+        form.value.msg = ""
+        setTimeout(() => {
+            message.value.title = null
+        }, 3000);
+    }
 </script>
 
 <style>
