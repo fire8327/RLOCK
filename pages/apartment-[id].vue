@@ -24,8 +24,8 @@
                 <p class="text-[10px] text-[#696969]">256 отзывов</p>
             </div>
         </div>
-        <div class="flex lg:items-start gap-5px-6 md:px-12 xl:px-[90px]">
-            <div class="flex flex-col gap-8 xl:gap-10 lg:w-[60%]">
+        <div class="flex lg:items-start max-lg:flex-col gap-5 px-6 md:px-12 xl:px-[90px]">
+            <div class="flex flex-col gap-8 xl:gap-10 w-full lg:w-[60%]">
                 <div class="flex flex-col gap-4 xl:gap-5">
                     <img src="/images/aparts/1.png" alt="">
                     <div class="flex items-center gap-5">
@@ -146,11 +146,11 @@
                 </div>
                 <div class="flex flex-col gap-6">
                     <p class="leading-[135.3%] font-light text-lg md:text-xl xl:text-2xl lg:pl-7">Расположение</p>
-                    <div class="w-full bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[1px] rounded-[25px]">
-                        <div class="w-full h-full rounded-[25px] bg-white overflow-hidden">
-                            <ClientOnly>
-                                <YandexMap :coordinates="[55.755864, 37.617698]" :zoom="10">
-                                    <YandexMarker :coordinates="[55.755864, 37.617698]" :marker-id="111">
+                    <ClientOnly>
+                        <div class="w-full bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[1px] rounded-[25px]">
+                            <div class="w-full h-full rounded-[25px] bg-white overflow-hidden">
+                                <YandexMap :coordinates="[55.755864, 37.617698]" :zoom="17">
+                                    <YandexMarker :coordinates="[55.755864, 37.617698]" :marker-id="666">
                                         <template #component>
                                             <div class="flex flex-col h-fit gap-2">
                                                 <p class="font-medium text-lg">apartment.city</p>
@@ -159,10 +159,109 @@
                                         </template>
                                     </YandexMarker>
                                 </YandexMap>
-                            </ClientOnly>
+                            </div>
+                        </div>
+                    </ClientOnly>
+                </div>
+                <div class="rounded-[20px] bg-white shadow-[1px_1px_20px_0px_rgba(0,0,0,0.15)] p-7 flex flex-col gap-7 text-[#181818]">
+                    <div class="flex items-center justify-between gap-4">
+                        <p class="leading-[135.3%] font-light text-2xl md:text-3xl xl:text-4xl">Отзывы</p>
+                        <div class="flex items-center gap-3">
+                            <div class="bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[1px] rounded-[5px]">
+                                <div class="relative py-2 pl-4 pr-20 font-light leading-[135.3%] rounded-[5px] bg-[#D9D9D9] w-full h-full">
+                                    <p class="text-sm">Превосходно</p>
+                                    <p class="text-base text-white py-1.5 px-4 absolute top-1/2 -translate-y-1/2 right-0 bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] rounded-[5px]">8.8</p>
+                                </div>
+                            </div>
+                            <p class="text-[10px] text-[#696969]">256 отзывов</p>
                         </div>
                     </div>
+                    <div class="flex flex-col gap-5">
+                        <div class="flex flex-col gap-4 text-base">
+                            <div class="flex items-center gap-4">
+                                <p class="font-medium">Алексей</p>
+                                <p class="text-base text-white py-0.5 px-4 bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] rounded-[5px]">8.8</p>
+                                <p class="text-xs font-light">Превосходно</p>
+                            </div>
+                            <div class="flex flex-col gap-2.5">
+                                <p class="font-medium leading-[135.3%]">Что хорошего в отеле</p>
+                                <p class="leading-[135.3%]">Рядом Красная площадь, быстрым шагом 8 минут. Все в доступности. Номера убирались качественно и вовремя. Удобные номера, есть в наличии двухкомнатные-очень удобно для командировок.</p>
+                            </div>
+                            <div class="flex flex-col gap-2.5">
+                                <p class="font-medium leading-[135.3%]">Что не понравилось</p>
+                                <p class="leading-[135.3%]">Очень скудный и бедный завтрак. Не всегда вовремя подходили официанты.</p>
+                            </div>
+                        </div>
+                        <div class="w-full h-px bg-[#E1E1E1]"></div>
+                    </div>
+                    <div class="flex flex-col gap-5">
+                        <div class="flex flex-col gap-4 text-base">
+                            <div class="flex items-center gap-4">
+                                <p class="font-medium">Алексей</p>
+                                <p class="text-base text-white py-0.5 px-4 bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] rounded-[5px]">8.8</p>
+                                <p class="text-xs font-light">Превосходно</p>
+                            </div>
+                            <div class="flex flex-col gap-2.5">
+                                <p class="font-medium leading-[135.3%]">Что хорошего в отеле</p>
+                                <p class="leading-[135.3%]">Рядом Красная площадь, быстрым шагом 8 минут. Все в доступности. Номера убирались качественно и вовремя. Удобные номера, есть в наличии двухкомнатные-очень удобно для командировок.</p>
+                            </div>
+                            <div class="flex flex-col gap-2.5">
+                                <p class="font-medium leading-[135.3%]">Что не понравилось</p>
+                                <p class="leading-[135.3%]">Очень скудный и бедный завтрак. Не всегда вовремя подходили официанты.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="py-3 px-[60px] text-white rounded-[10px] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] text-center w-fit text-base md:text-lg xl:text-xl leading-[135.3%]">Показать еще</button>
                 </div>
+            </div>
+            <div class="flex flex-col gap-5 w-full lg:w-[40%]">
+                <div class="flex items-center gap-4 md:gap-6 xl:gap-8 lg:self-end w-fit">
+                    <button class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
+                            <circle cx="17" cy="17" r="17" fill="url(#paint0_linear_877_1132)"/>
+                            <path d="M21.0898 24C20.5596 24 20.1081 23.8207 19.7355 23.4621C19.3628 23.1045 19.1765 22.6698 19.1765 22.1579C19.1765 22.0596 19.1854 21.9582 19.2032 21.8536C19.2206 21.7485 19.2468 21.6497 19.282 21.5574L13.3616 18.1959C13.1745 18.3993 12.9569 18.5577 12.7086 18.6712C12.4608 18.7851 12.1952 18.8421 11.9118 18.8421C11.3805 18.8421 10.9294 18.6631 10.5582 18.3049C10.1861 17.9473 10 17.5128 10 17.0015C10 16.4906 10.1861 16.0556 10.5582 15.6965C10.9289 15.3374 11.38 15.1579 11.9118 15.1579C12.1952 15.1579 12.4608 15.2149 12.7086 15.3288C12.9569 15.4423 13.1745 15.6007 13.3616 15.8041L19.282 12.4426C19.2468 12.3503 19.2206 12.2515 19.2032 12.1464C19.1854 12.0418 19.1765 11.9404 19.1765 11.8421C19.1765 11.3302 19.3623 10.8955 19.7339 10.5379C20.1051 10.1793 20.556 10 21.0867 10C21.6169 10 22.0683 10.1791 22.441 10.5372C22.8137 10.8948 23 11.3293 23 11.8406C23 12.3515 22.8139 12.7865 22.4418 13.1456C22.0706 13.5047 21.6195 13.6842 21.0882 13.6842C20.8048 13.6842 20.5392 13.6272 20.2914 13.5133C20.0431 13.3998 19.8255 13.2414 19.6384 13.038L13.718 16.3995C13.7532 16.4918 13.7794 16.5901 13.7968 16.6942C13.8146 16.7988 13.8235 16.8998 13.8235 16.9971C13.8235 17.0943 13.8146 17.1962 13.7968 17.3028C13.7794 17.4089 13.7532 17.5082 13.718 17.6005L19.6384 20.962C19.8255 20.7586 20.0431 20.6002 20.2914 20.4867C20.5392 20.3728 20.8048 20.3158 21.0882 20.3158C21.6195 20.3158 22.0706 20.4948 22.4418 20.8529C22.8139 21.2106 23 21.6451 23 22.1564C23 22.6673 22.8142 23.1023 22.4425 23.4614C22.0714 23.8205 21.6205 24 21.0898 24ZM21.0882 12.9474C21.4028 12.9474 21.6727 12.8391 21.8981 12.6224C22.1229 12.4053 22.2353 12.1452 22.2353 11.8421C22.2353 11.539 22.1229 11.2789 21.8981 11.0618C21.6727 10.8452 21.4028 10.7368 21.0882 10.7368C20.7737 10.7368 20.5037 10.8452 20.2784 11.0618C20.0536 11.2789 19.9412 11.539 19.9412 11.8421C19.9412 12.1452 20.0536 12.4053 20.2784 12.6224C20.5037 12.8391 20.7737 12.9474 21.0882 12.9474ZM11.9118 18.1053C12.2263 18.1053 12.4963 17.9969 12.7216 17.7803C12.9464 17.5632 13.0588 17.3031 13.0588 17C13.0588 16.6969 12.9464 16.4368 12.7216 16.2197C12.4963 16.0031 12.2263 15.8947 11.9118 15.8947C11.5972 15.8947 11.3273 16.0031 11.1019 16.2197C10.8771 16.4368 10.7647 16.6969 10.7647 17C10.7647 17.3031 10.8771 17.5632 11.1019 17.7803C11.3273 17.9969 11.5972 18.1053 11.9118 18.1053ZM21.0882 23.2632C21.4028 23.2632 21.6727 23.1548 21.8981 22.9382C22.1229 22.7211 22.2353 22.461 22.2353 22.1579C22.2353 21.8548 22.1229 21.5947 21.8981 21.3776C21.6727 21.1609 21.4028 21.0526 21.0882 21.0526C20.7737 21.0526 20.5037 21.1609 20.2784 21.3776C20.0536 21.5947 19.9412 21.8548 19.9412 22.1579C19.9412 22.461 20.0536 22.7211 20.2784 22.9382C20.5037 23.1548 20.7737 23.2632 21.0882 23.2632Z" fill="white"/>
+                            <defs>
+                                <linearGradient id="paint0_linear_877_1132" x1="1.11215" y1="-3.05251e-06" x2="34.4267" y2="1.87705" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#B98CF2"/>
+                                    <stop offset="1" stop-color="#48BBDE"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span class="text-lg leading-[135.3%]">Поделиться</span>
+                    </button>
+                    <button class="flex items-center gap-3">
+                        <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16.5" cy="16.5" r="16.5" fill="url(#paint0_linear_2601_1201)"/>
+                                <path d="M19.7926 10.938C18.411 10.938 17.2202 11.584 16.5706 12.6541C15.9211 11.584 14.7303 10.938 13.3487 10.938C12.3579 10.9392 11.408 11.3269 10.7073 12.0163C10.0067 12.7056 9.61252 13.6401 9.61133 14.615C9.61133 16.4275 10.7712 18.3218 13.0523 20.244C14.1056 21.1257 15.2428 21.9055 16.4482 22.5725C16.4858 22.5925 16.5279 22.603 16.5706 22.603C16.6134 22.603 16.6555 22.5925 16.6931 22.5725C17.8985 21.9055 19.0357 21.1257 20.089 20.244C22.3701 18.3218 23.53 16.4275 23.53 14.615C23.5288 13.6401 23.1346 12.7056 22.434 12.0163C21.7333 11.3269 20.7834 10.9392 19.7926 10.938ZM16.5706 22.059C15.6685 21.5544 10.1268 18.2964 10.1268 14.615C10.1279 13.7746 10.4676 12.9689 11.0716 12.3747C11.6756 11.7805 12.4946 11.4462 13.3487 11.4452C14.709 11.4452 15.8522 12.1622 16.3322 13.316C16.3516 13.3625 16.3847 13.4023 16.4271 13.4303C16.4696 13.4583 16.5195 13.4732 16.5706 13.4732C16.6218 13.4732 16.6717 13.4583 16.7142 13.4303C16.7566 13.4023 16.7896 13.3625 16.8091 13.316C17.2891 12.1622 18.4323 11.4452 19.7926 11.4452C20.6467 11.4462 21.4657 11.7805 22.0697 12.3747C22.6737 12.9689 23.0134 13.7746 23.0145 14.615C23.0145 18.292 17.4728 21.5544 16.5706 22.059Z" fill="white"/>
+                            <defs>
+                            <linearGradient id="paint0_linear_2601_1201" x1="1.07944" y1="-2.96273e-06" x2="33.4141" y2="1.82184" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#B98CF2"/>
+                                <stop offset="1" stop-color="#48BBDE"/>
+                            </linearGradient>
+                            </defs>
+                        </svg>
+                        <span class="text-lg leading-[135.3%]">В избранное</span>
+                    </button>
+                </div>
+                <div class="w-full bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] rounded-[25px] p-[2px]">
+                    <div class="w-full h-full bg-white px-5 py-7 flex flex-col gap-5 items-center rounded-[25px]">
+                        <p class="leading-[135.3%] font-light text-lg md:text-xl xl:text-2xl text-center">Бронирование отеля</p>
+                        <div class="flex flex-col gap-4 items-center w-full">
+                            <div class="w-full relative rounded-[10px] border border-[#B1B1B1]">
+                                <input type="date" class="rounded-l-[10px] px-10 py-2.5 md:text-lg xl:text-xl bg-[#EBEBEB] focus:ring-0 focus:outline-none w-1/2">
+                                <input type="date" class="rounded-r-[10px] px-10 py-2.5 md:text-lg xl:text-xl bg-[#EBEBEB] focus:ring-0 focus:outline-none w-1/2">
+                                <div class="absolute left-1/2 -translate-x-1/2 top-0 h-full w-px bg-[#B1B1B1]"></div>
+                            </div>
+                            <input type="text" placeholder="2 гостя, 1 номер" class="w-full px-10 py-2.5 md:text-lg xl:text-xl placeholder-[#696969] rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] focus:ring-0 focus:outline-none">
+                            <input type="text" placeholder="+7 (___) - ___ - __ - __" class="w-full px-10 py-2.5 md:text-lg xl:text-xl placeholder-[#696969] rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] focus:ring-0 focus:outline-none">
+                        </div>
+                        <div class="flex items-center justify-between px-2.5 w-full">
+                            <p class="text-base xl:text-lg font-light leading-[165.3%]">Итого за 2 суток</p>
+                            <p class="text-lg md:text-xl xl:text-2xl font-medium">5650 ₽</p>   
+                        </div>
+                        <button class="py-3 text-white rounded-[10px] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] text-center w-full text-lg md:text-xl xl:text-2xl leading-[135.3%]">Показать еще</button>
+                    </div>
+                </div>    
             </div>
         </div>
     </div>
@@ -171,3 +270,13 @@
 <script setup>
     import { yandexMap, yandexMarker } from 'vue-yandex-maps'
 </script>
+
+<style>
+    .yandex-container {
+        height: 400px;
+    }
+    .yandex-balloon {
+        height: 60px;
+        width: 250px;
+    }
+</style>
