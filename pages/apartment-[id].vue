@@ -3,7 +3,7 @@
         <div class="w-full py-6 xl:py-8 px-6 md:px-12 xl:px-[90px] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] rounded-[25px]">
             <p class="NeutralFace text-2xl md:text-3xl xl:text-[32px] leading-[151.8%] uppercase text-white">Отели москвы</p>
         </div>
-        <div class="flex items-center gap-5 text-base font-light px-6 md:px-12 xl:px-[90px]">
+        <div class="flex items-center gap-5 text-base font-light px-6 md:px-12 xl:px-[90px] max-md:hidden">
             <NuxtLink to="/">Главная</NuxtLink>
             <img src="/images/icons/breadcrumbs.svg" alt="">
             <NuxtLink to="/">Россия</NuxtLink>
@@ -12,8 +12,8 @@
             <img src="/images/icons/breadcrumbs.svg" alt="">
             <NuxtLink to="/">Отель “Астро Плаза”</NuxtLink>
         </div>
-        <div class="flex items-center gap-5 mt-3 px-6 md:px-12 xl:px-[90px]">
-            <p class="leading-[135.3%] font-light text-2xl md:text-3xl xl:text-4xl">Отель “Астро Плаза”</p>
+        <div class="flex max-md:flex-col md:items-center gap-5 mt-3 px-6 md:px-12 xl:px-[90px]">
+            <p class="leading-[135.3%] font-light text-2xl md:text-3xl xl:text-4xl">{{ apartment[0].country }}, {{ apartment[0].city }}, {{ apartment[0].address }}</p>
             <div class="flex items-center gap-3">
                 <div class="bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[1px] rounded-[5px]">
                     <div class="relative py-2 pl-4 pr-20 font-light leading-[135.3%] rounded-[5px] bg-[#D9D9D9] w-full h-full">
@@ -27,7 +27,9 @@
         <div class="flex lg:items-start max-lg:flex-col gap-5 px-6 md:px-12 xl:px-[90px]">
             <div class="flex flex-col gap-8 xl:gap-10 w-full lg:w-[60%]">
                 <div class="flex flex-col gap-4 xl:gap-5">
-                    <img src="/images/aparts/1.png" alt="">
+                    <div class="flex flex-col gap-4">
+                        <img v-for="image in apartment[0].image" :src="`${config.public.APIbaseURL}/${image.path}`" alt="" class="w-full max-w-max object-cover aspect-video">
+                    </div>
                     <div class="flex items-center gap-5">
                         <div class="flex items-center gap-2.5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23" viewBox="0 0 22 23" fill="none">
@@ -124,20 +126,20 @@
                     </div>
                     <div class="rounded-[20px] bg-white shadow-[1px_1px_20px_0px_rgba(0,0,0,0.15)] p-7 flex flex-col gap-2.5 text-[#181818]">
                         <p class="leading-[135.3%] font-light text-lg md:text-xl xl:text-2xl">Места рядом</p>
-                        <div class="w-full gap-10 flex items-start text-base">
-                            <div class="flex flex-col gap-2.5 items-center">
+                        <div class="w-full gap-10 flex max-md:flex-col md:items-start text-base text-center">
+                            <div class="flex flex-col gap-2.5 items-center md:justify-between md:h-full">
                                 <p class="leading-[135.3%]">Аэропорт</p>
                                 <p class="py-0.5 px-1 rounded-[5px] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] text-white">20 км</p>
                             </div>
-                            <div class="flex flex-col gap-2.5 items-center">
+                            <div class="flex flex-col gap-2.5 items-center md:justify-between md:h-full">
                                 <p class="leading-[135.3%]">Автобусная остановка</p>
                                 <p class="py-0.5 px-1 rounded-[5px] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] text-white">50 м</p>
                             </div>
-                            <div class="flex flex-col gap-2.5 items-center">
+                            <div class="flex flex-col gap-2.5 items-center md:justify-between md:h-full">
                                 <p class="leading-[135.3%]">м. Черкизовская</p>
                                 <p class="py-0.5 px-1 rounded-[5px] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] text-white">50 м</p>
                             </div>
-                            <div class="flex flex-col gap-2.5 items-center">
+                            <div class="flex flex-col gap-2.5 items-center md:justify-between md:h-full">
                                 <p class="leading-[135.3%]">м. Черкизовская</p>
                                 <p class="py-0.5 px-1 rounded-[5px] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] text-white">50 м</p>
                             </div>
@@ -149,12 +151,12 @@
                     <ClientOnly>
                         <div class="w-full bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[1px] rounded-[25px]">
                             <div class="w-full h-full rounded-[25px] bg-white overflow-hidden">
-                                <YandexMap :coordinates="[55.755864, 37.617698]" :zoom="17">
-                                    <YandexMarker :coordinates="[55.755864, 37.617698]" :marker-id="666">
+                                <YandexMap :coordinates="[apartment[0].location.lat, apartment[0].location.long]" :zoom="17">
+                                    <YandexMarker :coordinates="[apartment[0].location.lat, apartment[0].location.long]" :marker-id="666">
                                         <template #component>
                                             <div class="flex flex-col h-fit gap-2">
-                                                <p class="font-medium text-lg">apartment.city</p>
-                                                <p>apartment.address</p>
+                                                <p class="font-medium text-lg">{{ apartment[0].city }}</p>
+                                                <p>{{ apartment[0].address }}</p>
                                             </div>
                                         </template>
                                     </YandexMarker>
@@ -164,7 +166,7 @@
                     </ClientOnly>
                 </div>
                 <div class="rounded-[20px] bg-white shadow-[1px_1px_20px_0px_rgba(0,0,0,0.15)] p-7 flex flex-col gap-7 text-[#181818]">
-                    <div class="flex items-center justify-between gap-4">
+                    <div class="flex max-md:flex-col md:items-center md:justify-between gap-4">
                         <p class="leading-[135.3%] font-light text-2xl md:text-3xl xl:text-4xl">Отзывы</p>
                         <div class="flex items-center gap-3">
                             <div class="bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[1px] rounded-[5px]">
@@ -269,6 +271,12 @@
 
 <script setup>
     import { yandexMap, yandexMarker } from 'vue-yandex-maps'
+    const route  = useRoute()
+    const config = useRuntimeConfig()
+    const { data, error } = await useFetch(`${config.public.APIbaseURL}/api/admin/getApartments`)
+    const apartment = data.value.filter(el => {
+        return el._id = route.params.id
+    })
 </script>
 
 <style>
