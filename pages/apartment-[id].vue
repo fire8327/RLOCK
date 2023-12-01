@@ -13,7 +13,7 @@
             <NuxtLink to="/">Отель “Астро Плаза”</NuxtLink>
         </div>
         <div class="flex max-md:flex-col md:items-center gap-5 mt-3 px-6 md:px-12 xl:px-[90px]">
-            <p class="leading-[135.3%] font-light text-2xl md:text-3xl xl:text-4xl">{{ apartment[0].country }}, {{ apartment[0].city }}, {{ apartment[0].address }}</p>
+            <!-- <p class="leading-[135.3%] font-light text-2xl md:text-3xl xl:text-4xl">{{ apartment[0].country }}, {{ apartment[0].city }}, {{ apartment[0].address }}</p> -->
             <div class="flex items-center gap-3">
                 <div class="bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[1px] rounded-[5px]">
                     <div class="relative py-2 pl-4 pr-20 font-light leading-[135.3%] rounded-[5px] bg-[#D9D9D9] w-full h-full">
@@ -28,7 +28,7 @@
             <div class="flex flex-col gap-8 xl:gap-10 w-full lg:w-[60%]">
                 <div class="flex flex-col gap-4 xl:gap-5">
                     <div class="flex flex-col gap-4">
-                        <img v-for="image in apartment[0].image" :src="`${config.public.APIbaseURL}/${image.path}`" alt="" class="w-full max-w-max object-cover aspect-video">
+                        <img v-for="img in apartment[0].image" :src="`${config.public.APIbaseURL}/${img.path}`" alt="" class="w-full max-w-max object-cover aspect-video rounded-[25px]">
                     </div>
                     <div class="flex items-center gap-5">
                         <div class="flex items-center gap-2.5">
@@ -49,7 +49,7 @@
                                 </clipPath>
                             </defs>
                             </svg>
-                            <p class="leading-[165.3%] font-light text-base md:text-lg xl:text-xl">Россия, Москва, проспект Ленинского Комсомола 41</p>
+                            <p class="leading-[165.3%] font-light text-base md:text-lg xl:text-xl">{{ apartment[0].country }}, {{ apartment[0].city }}, {{ apartment[0].address }}</p>
                         </div>
                         <NuxtLink to="/" class="text-[10px] text-[#696969] underline">Показать на карте</NuxtLink>
                     </div>
@@ -250,18 +250,22 @@
                         <p class="leading-[135.3%] font-light text-lg md:text-xl xl:text-2xl text-center">Бронирование отеля</p>
                         <div class="flex flex-col gap-4 items-center w-full">
                             <div class="w-full relative rounded-[10px] border border-[#B1B1B1]">
-                                <input type="date" class="rounded-l-[10px] px-10 py-2.5 md:text-lg xl:text-xl bg-[#EBEBEB] focus:ring-0 focus:outline-none w-1/2">
-                                <input type="date" class="rounded-r-[10px] px-10 py-2.5 md:text-lg xl:text-xl bg-[#EBEBEB] focus:ring-0 focus:outline-none w-1/2">
+                                <input :value="dateFrom" @input="dateFrom = $event.target.value" type="date" class="rounded-l-[10px] px-10 py-2.5 md:text-lg xl:text-xl bg-[#EBEBEB] focus:ring-0 focus:outline-none w-1/2">
+                                <input :value="dateTo" @input="dateTo = $event.target.value" type="date" class="rounded-r-[10px] px-10 py-2.5 md:text-lg xl:text-xl bg-[#EBEBEB] focus:ring-0 focus:outline-none w-1/2">
                                 <div class="absolute left-1/2 -translate-x-1/2 top-0 h-full w-px bg-[#B1B1B1]"></div>
                             </div>
                             <input type="text" placeholder="2 гостя, 1 номер" class="w-full px-10 py-2.5 md:text-lg xl:text-xl placeholder-[#696969] rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] focus:ring-0 focus:outline-none">
                             <input type="text" placeholder="+7 (___) - ___ - __ - __" class="w-full px-10 py-2.5 md:text-lg xl:text-xl placeholder-[#696969] rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] focus:ring-0 focus:outline-none">
                         </div>
-                        <div class="flex items-center justify-between px-2.5 w-full">
-                            <p class="text-base xl:text-lg font-light leading-[165.3%]">Итого за 2 суток</p>
-                            <p class="text-lg md:text-xl xl:text-2xl font-medium">5650 ₽</p>   
+                        <div v-if="days" class="flex items-center justify-between px-2.5 w-full">
+                            <p class="text-base xl:text-lg font-light leading-[165.3%]">Итого за {{ days }} суток</p>                         
+                            <p class="text-lg md:text-xl xl:text-2xl font-medium">{{ prices }} ₽</p>   
                         </div>
-                        <button class="py-3 text-white rounded-[10px] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] text-center w-full text-lg md:text-xl xl:text-2xl leading-[135.3%]">Показать еще</button>
+                        <div v-else class="flex items-center justify-between px-2.5 w-full">
+                            <p class="text-base xl:text-lg font-light leading-[165.3%]">Итого за _ суток</p>                            
+                            <p class="text-lg md:text-xl xl:text-2xl font-medium">0 ₽</p>   
+                        </div>
+                        <button v-if="authenticated" class="py-3 text-white rounded-[10px] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] text-center w-full text-lg md:text-xl xl:text-2xl leading-[135.3%]">Забронировать</button>
                     </div>
                 </div>    
             </div>
@@ -270,13 +274,26 @@
 </template>
 
 <script setup>
+    /* map */
     import { yandexMap, yandexMarker } from 'vue-yandex-maps'
-    const route  = useRoute()
+    const { id } = useRoute().params
+
+    /* data */
     const config = useRuntimeConfig()
     const { data, error } = await useFetch(`${config.public.APIbaseURL}/api/admin/getApartments`)
     const apartment = data.value.filter(el => {
-        return el._id = route.params.id
+        return el._id == id
     })
+
+    /* prices and days */
+    const { city, dateFrom, dateTo} = storeToRefs(useSearchStore())
+    const days = ref()
+    const prices = ref()
+    days.value = Math.round((new Date(dateTo.value).getTime() - new Date(dateFrom.value).getTime())/(1000 * 60 * 60 * 24))
+    prices.value = days.value * apartment[0].pricePerDay
+
+    /* user */
+    const { authenticated } = storeToRefs(useUserStore())
 </script>
 
 <style>

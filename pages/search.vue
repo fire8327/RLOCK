@@ -87,9 +87,9 @@
                     <div class="bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] p-[1px] rounded-[20px]" v-for="apartment in apartments">
                         <div class="p-3 bg-white rounded-[20px] w-full h-full flex max-md:flex-col md:items-start md:justify-between gap-5">
                             <div class="flex flex-col gap-2" v-if="apartment.image">
-                                <a :href="`/apartment-${apartment._id}`">
+                                <NuxtLink :to="`/apartment-${apartment._id}`">
                                     <img :src="`${config.public.APIbaseURL}/${image.path}`" alt="" v-for="image in apartment.image" class="w-full md:w-[300px] max-w-max object-cover aspect-video rounded-[13px]">
-                                </a>
+                                </NuxtLink>
                             </div>
                             <div class="w-full h-72 rounded-xl bg-[#7C7C7C]" v-else></div>
                             <div class="flex flex-col gap-2.5 leading-[135.3%] grow">
@@ -157,7 +157,7 @@
     }
     modifyData()
     
-    /* add undergrou, price, create filters */
+    /* add underground, price, create filters */
     const stations = ref([])
     const prices = []
     const dates = []
