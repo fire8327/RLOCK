@@ -40,6 +40,7 @@
             userStore.authenticated = true
             userStore.role = "user"
             userStore.token = data.value.token
+            userStore.id = data.value.user._id
             router.push('/')
         }
         if(error.value) {

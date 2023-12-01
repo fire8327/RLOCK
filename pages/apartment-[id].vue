@@ -276,13 +276,13 @@
 <script setup>
     /* map */
     import { yandexMap, yandexMarker } from 'vue-yandex-maps'
-    const { id } = useRoute().params
+    const aparId = useRoute().params.id
 
     /* data */
     const config = useRuntimeConfig()
     const { data, error } = await useFetch(`${config.public.APIbaseURL}/api/admin/getApartments`)
     const apartment = data.value.filter(el => {
-        return el._id == id
+        return el._id == aparId
     })
 
     /* prices and days */
@@ -293,7 +293,7 @@
     prices.value = days.value * apartment[0].pricePerDay
 
     /* user */
-    const { authenticated } = storeToRefs(useUserStore())
+    const { authenticated, id } = storeToRefs(useUserStore())
 </script>
 
 <style>

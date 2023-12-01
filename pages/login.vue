@@ -55,6 +55,7 @@
                 console.log(data.value)
                 userStore.authenticated = true
                 userStore.role = "user"
+                userStore.id = data.value.user._id
                 router.push('/')
             }
             if(error.value) {
