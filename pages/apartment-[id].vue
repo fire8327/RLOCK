@@ -285,13 +285,17 @@
     const { city, dateFrom, dateTo} = storeToRefs(useSearchStore())
 
     /* user */
-    const { authenticated, id } = storeToRefs(useUserStore())
+    const { authenticated, id, token } = storeToRefs(useUserStore())
 
     /* book */
     const router = useRouter()
     const bookApartment = async () => {        
         const { data, error, pending } = await useFetch(`${config.public.APIbaseURL}/api/user/bookapartment`, {
             method: "PATCH",
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token.value}`
+            },
             body: {
                 apartmentId: apartId,
                 userId: id.value,
