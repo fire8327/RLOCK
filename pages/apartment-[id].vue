@@ -257,13 +257,9 @@
                             <input type="text" placeholder="2 гостя, 1 номер" class="w-full px-10 py-2.5 md:text-lg xl:text-xl placeholder-[#696969] rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] focus:ring-0 focus:outline-none">
                             <input type="text" placeholder="+7 (___) - ___ - __ - __" class="w-full px-10 py-2.5 md:text-lg xl:text-xl placeholder-[#696969] rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] focus:ring-0 focus:outline-none">
                         </div>
-                        <div v-if="days" class="flex items-center justify-between px-2.5 w-full">
-                            <p class="text-base xl:text-lg font-light leading-[165.3%]">Итого за {{ days }} суток</p>                         
-                            <p class="text-lg md:text-xl xl:text-2xl font-medium">{{ prices }} ₽</p>   
-                        </div>
-                        <div v-else class="flex items-center justify-between px-2.5 w-full">
-                            <p class="text-base xl:text-lg font-light leading-[165.3%]">Итого за _ суток</p>                            
-                            <p class="text-lg md:text-xl xl:text-2xl font-medium">0 ₽</p>   
+                        <div class="flex items-center justify-between px-2.5 w-full">
+                            <p class="text-base xl:text-lg font-light leading-[165.3%]">Итого за 1 сутки</p>                         
+                            <p class="text-lg md:text-xl xl:text-2xl font-medium">{{ apartment[0].pricePerDay }} ₽</p>   
                         </div>
                         <button v-if="authenticated" @click="bookApartment" class="py-3 text-white rounded-[10px] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] text-center w-full text-lg md:text-xl xl:text-2xl leading-[135.3%]">Забронировать</button>
                     </div>
@@ -285,12 +281,8 @@
         return el._id == apartId
     })
 
-    /* prices and days */
+    /* dates */
     const { city, dateFrom, dateTo} = storeToRefs(useSearchStore())
-    const days = ref()
-    const prices = ref()
-    days.value = Math.round((new Date(dateTo.value).getTime() - new Date(dateFrom.value).getTime())/(1000 * 60 * 60 * 24))
-    prices.value = days.value * apartment[0].pricePerDay
 
     /* user */
     const { authenticated, id } = storeToRefs(useUserStore())
@@ -299,7 +291,7 @@
     const router = useRouter()
     const bookApartment = async () => {        
         const { data, error, pending } = await useFetch(`${config.public.APIbaseURL}/api/user/bookapartment`, {
-            method: "POST",
+            method: "PATCH",
             body: {
                 apartmentId: apartId,
                 userId: id.value,
