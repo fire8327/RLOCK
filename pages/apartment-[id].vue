@@ -262,6 +262,7 @@
                             <p class="text-lg md:text-xl xl:text-2xl font-medium">{{ apartment[0].pricePerDay }} ₽</p>   
                         </div>
                         <button v-if="authenticated" @click="bookApartment" class="py-3 text-white rounded-[10px] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] text-center w-full text-lg md:text-xl xl:text-2xl leading-[135.3%]">Забронировать</button>
+                        <p class="text-base leading-[165.3%] font-light px-2.5 text-black/75 text-center">Для бронирования апартаментов необходимо войти в аккаунт</p>
                     </div>
                 </div>    
             </div>
