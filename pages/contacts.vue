@@ -59,8 +59,8 @@
                         <p class="font-light text-base md:text-lg xl:text-xl leading-[165.3%]">Заполните форму обратной связи и мы свяжемся с вами через 30 минут.</p>
                     </div>
                     <form @submit.prevent="submitForm" id="feedbackForm" class="flex flex-col gap-4 w-full">
-                        <input v-model="form.name" type="text" class="rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] text-base py-2.5 px-5 placeholder-[#696969] focus:ring-0 focus:outline-none focus:appearance-none" placeholder="Ваше имя">
-                        <input v-model="form.email" type="email" class="rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] text-base py-2.5 px-5 placeholder-[#696969] focus:ring-0 focus:outline-none focus:appearance-none" placeholder="Email">
+                        <input required v-model="form.name" type="text" class="rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] text-base py-2.5 px-5 placeholder-[#696969] focus:ring-0 focus:outline-none focus:appearance-none" placeholder="Ваше имя">
+                        <input required v-model="form.email" type="email" class="rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] text-base py-2.5 px-5 placeholder-[#696969] focus:ring-0 focus:outline-none focus:appearance-none" placeholder="Email">
                         <textarea v-model="form.msg" class="rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] text-base py-2.5 px-5 placeholder-[#696969] focus:ring-0 focus:outline-none focus:appearance-none resize-none h-24" placeholder="Текст вопроса"></textarea>
                         <button class="text-white font-normal bg-gradient-to-r from-[#48BBDE] to-[#B190F1] rounded-[10px] text-center text-xl md:text-xl xl:text-2xl py-3 w-full">Отправить</button>
                         <button type="button" @click="message.title = null" class="fixed top-10 right-10 z-[41] cursor-pointer flex items-center gap-4 px-6 py-2 rounded-2xl w-fit text-[#131313] bg-white dark:text-white dark:bg-[#131313]" :class="message.type ? 'shadow-[0_0_20px_-7px]' : 'bg-red-500'" v-if="message.title">

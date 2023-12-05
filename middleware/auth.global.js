@@ -11,7 +11,11 @@ export default defineNuxtRouteMiddleware((to) => {
         return navigateTo('/')
     }
 
-    if(role.value!='admin' && to?.path.includes("/admin")) {
+    if(role.value != 'admin' && to?.path.includes("/admin")) {
+        return navigateTo('/')
+    }
+
+    if(!authenticated.value && to?.path === '/profile' && role.value != 'admin') {
         return navigateTo('/')
     }
 })

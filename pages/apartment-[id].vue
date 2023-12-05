@@ -254,15 +254,13 @@
                                 <input readonly :value="dateTo" type="date" class="rounded-r-[10px] px-10 py-2.5 md:text-lg xl:text-xl bg-[#EBEBEB] focus:ring-0 focus:outline-none w-1/2">
                                 <div class="absolute left-1/2 -translate-x-1/2 top-0 h-full w-px bg-[#B1B1B1]"></div>
                             </div>
-                            <input type="text" placeholder="2 гостя, 1 номер" class="w-full px-10 py-2.5 md:text-lg xl:text-xl placeholder-[#696969] rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] focus:ring-0 focus:outline-none">
-                            <input type="text" placeholder="+7 (___) - ___ - __ - __" class="w-full px-10 py-2.5 md:text-lg xl:text-xl placeholder-[#696969] rounded-[10px] bg-[#EBEBEB] border border-[#B1B1B1] focus:ring-0 focus:outline-none">
                         </div>
                         <div class="flex items-center justify-between px-2.5 w-full">
                             <p class="text-base xl:text-lg font-light leading-[165.3%]">Итого за 1 сутки</p>                         
                             <p class="text-lg md:text-xl xl:text-2xl font-medium">{{ apartment[0].pricePerDay }} ₽</p>   
                         </div>
                         <button v-if="authenticated" @click="bookApartment" class="py-3 text-white rounded-[10px] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] text-center w-full text-lg md:text-xl xl:text-2xl leading-[135.3%]">Забронировать</button>
-                        <p class="text-base leading-[165.3%] font-light px-2.5 text-black/75 text-center">Для бронирования апартаментов необходимо войти в аккаунт</p>
+                        <p v-else class="text-base leading-[165.3%] font-light px-2.5 text-black/75 text-center">Для бронирования апартаментов необходимо войти в аккаунт</p>
                     </div>
                 </div>    
             </div>
@@ -291,7 +289,7 @@
     /* book */
     const router = useRouter()
     const bookApartment = async () => {        
-        const { data, error, pending } = await useFetch(`${config.public.APIbaseURL}/api/user/bookapartment`, {
+        const { data: apartments, error: apartmentsError } = await useFetch(`${config.public.APIbaseURL}/api/user/bookapartment`, {
             method: "PATCH",
             headers: { 
                 'Content-Type': 'application/json',
@@ -304,12 +302,28 @@
                 date2: dateTo.value
             }
         })    
-        if(data.value) {
-            console.log(data.value)
+        if(apartments.value) {
+            console.log(apartments.value)
+        }
+        if(apartmentsError.value) {
+            console.log(apartmentsError.value)
+        }
+
+        const { data: book, error: bookError } = await useFetch(`${config.public.APIbaseURL}/api/user/getcode/${apartId}`, {
+            method: "GET",
+            headers: { 
+                'Content-Type': 'application/json'
+            },
+            body: {
+                userId: id.value
+            }
+        })    
+        if(book.value) {
+            console.log(book.value)
             router.push('/')
         }
-        if(error.value) {
-            console.log(error.value)
+        if(bookError.value) {
+            console.log(bookError.value)
         }
     }
 </script>
