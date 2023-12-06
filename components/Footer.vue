@@ -8,7 +8,7 @@
                         <NuxtLink to="/">Сдать жилье</NuxtLink>
                         <NuxtLink to="/">Бронирования</NuxtLink>
                         <NuxtLink to="/">Отзывы</NuxtLink>
-                        <NuxtLink to="/">Контакты</NuxtLink>
+                        <NuxtLink to="/contacts">Контакты</NuxtLink>
                         <NuxtLink to="/">Помощь</NuxtLink>
                         <NuxtLink to="/">Профиль</NuxtLink>
                         <NuxtLink to="/">Политика лояльности</NuxtLink>
