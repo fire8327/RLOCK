@@ -23,6 +23,7 @@
                     </svg>
                     <p class="leading-[135.3%] font-light text-base md:text-lg xl:text-xl">{{ user[0].email }}</p>
                 </div>
+                <button @click="logout" class="py-2 px-4 rounded-[10px] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] text-white text-sm md:text-base xl:text-lg">Выйти</button>
             </div>
             <div class="bg-gradient-to-br from-[#48BBDE] to-[#B190F1] rounded-[25px] p-[2px] lg:w-[30%]">
                 <div class="w-full h-full bg-white p-5 pb-6 flex flex-col gap-5 rounded-[25px]">
@@ -47,13 +48,15 @@
 </template>
 
 <script setup>
-    const { id } = storeToRefs(useUserStore())
+    /* getUser */
+    const { id, authenticated, role } = storeToRefs(useUserStore())
     const config = useRuntimeConfig()
     const { data: users, error: errorUsers } = await useFetch(`${config.public.APIbaseURL}/api/admin/getAllUsers`)  
     const user = users.value.filter(el => {
         return el._id == id.value
     })
 
+    /* form */
     const form = ref({
         name: "",
         email: "",
@@ -87,5 +90,13 @@
         setTimeout(() => {
             message.value.title = null
         }, 3000);
+    }
+
+    /* logout */
+    const router = useRouter()
+    const logout = () => {
+        authenticated.value = false
+        role.value = null
+        router.push("/")
     }
 </script>
