@@ -289,7 +289,7 @@
     /* book */
     const router = useRouter()
     const bookApartment = async () => {        
-        const { data: apartments, error: apartmentsError } = await useFetch(`${config.public.APIbaseURL}/api/user/bookapartment`, {
+        /* const { data: apartments, error: apartmentsError } = await useFetch(`${config.public.APIbaseURL}/api/user/bookapartment`, {
             method: "PATCH",
             headers: { 
                 'Content-Type': 'application/json',
@@ -307,20 +307,21 @@
         }
         if(apartmentsError.value) {
             console.log(apartmentsError.value)
-        }
+        } */
 
         const { data: book, error: bookError } = await useFetch(`${config.public.APIbaseURL}/api/user/getcode/${apartId}`, {
             method: "GET",
             headers: { 
-                'Content-Type': 'application/json'
-            },
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token.value}`
+            }/* ,
             body: {
                 userId: id.value
-            }
+            } */
         })    
         if(book.value) {
             console.log(book.value)
-            router.push('/')
+            /* router.push('/') */
         }
         if(bookError.value) {
             console.log(bookError.value)
