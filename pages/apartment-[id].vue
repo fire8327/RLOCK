@@ -309,22 +309,18 @@
             console.log(apartmentsError.value)
         } */
 
-        const { data: book, error: bookError } = await useFetch(`${config.public.APIbaseURL}/api/user/getcode/${apartId}`, {
+        const { data: books, error: booksError } = await useFetch(`${config.public.APIbaseURL}/api/user/getcode/${apartId}`, {
             method: "GET",
             headers: { 
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token.value}`
-            }/* ,
-            body: {
-                userId: id.value
-            } */
+            }
         })    
-        if(book.value) {
-            console.log(book.value)
-            /* router.push('/') */
+        if(books.value) {
+            console.log(books.value)
         }
-        if(bookError.value) {
-            console.log(bookError.value)
+        if(booksError.value) {
+            console.log(booksError.value)
         }
     }
 </script>
