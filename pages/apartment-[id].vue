@@ -261,6 +261,11 @@
                         </div>
                         <button v-if="authenticated" @click="bookApartment" class="py-3 text-white rounded-[10px] bg-gradient-to-r from-[#B98CF2] to-[#48BBDE] text-center w-full text-lg md:text-xl xl:text-2xl leading-[135.3%]">Забронировать</button>
                         <p v-else class="text-base leading-[165.3%] font-light px-2.5 text-black/75 text-center">Для бронирования апартаментов необходимо войти в аккаунт</p>
+                        <p v-if="psw" class="lg:text-lg leading-[165.3%] font-light">Код от апартаментов - <span class="font-medium lg:text-xl">{{ psw }}</span></p>   
+                        <button type="button" @click="message.title = null" class="fixed top-10 right-10 z-10 flex items-center gap-4 px-6 py-2 rounded-2xl w-fit text-[#131313] bg-white dark:text-white dark:bg-[#131313]" :class="message.type ? 'shadow-[0_0_20px_-7px]' : 'bg-red-500'" v-if="message.title">
+                            <span>{{message.title}}</span>
+                            <Icon name="material-symbols:close-rounded" class="text-xl"/>
+                        </button>
                     </div>
                 </div>    
             </div>
@@ -287,9 +292,11 @@
     const { authenticated, id, token } = storeToRefs(useUserStore())
 
     /* book */
+    let message = ref({title:null, type:true})
     const router = useRouter()
+    const psw = ref()
     const bookApartment = async () => {        
-        /* const { data: apartments, error: apartmentsError } = await useFetch(`${config.public.APIbaseURL}/api/user/bookapartment`, {
+        const { data: apartments, error: apartmentsError } = await useFetch(`${config.public.APIbaseURL}/api/user/bookapartment`, {
             method: "PATCH",
             headers: { 
                 'Content-Type': 'application/json',
@@ -307,7 +314,7 @@
         }
         if(apartmentsError.value) {
             console.log(apartmentsError.value)
-        } */
+        }
 
         const { data: books, error: booksError } = await useFetch(`${config.public.APIbaseURL}/api/user/getcode/${apartId}`, {
             method: "GET",
@@ -318,8 +325,16 @@
         })    
         if(books.value) {
             console.log(books.value)
+            psw.value = books.value.dynamic_password
+            message.value.title = 'Успешное бронирование!'
+            message.value.type = true 
+            setTimeout(() => {
+                message.value.title = null
+            }, 3000);
         }
         if(booksError.value) {
+            message.value.title = 'При бронировании произошла ошибка!'
+            message.value.type = false
             console.log(booksError.value)
         }
     }
