@@ -146,7 +146,7 @@
         apartments.value = data.value
         filterData.value = apartments.value.filter(el => {
             const result = el.bookedDates.find(item => {
-                return dateFrom.value && dateTo.value && new Date (item).toISOString().substring(0, 10) > dateFrom.value && new Date (item).toISOString().substring(0, 10) < dateTo.value
+                return dateFrom.value && dateTo.value && new Date (item).toISOString().substring(0, 10) >= dateFrom.value && new Date (item).toISOString().substring(0, 10) <= dateTo.value
             })
             if (result) {
                 return false
